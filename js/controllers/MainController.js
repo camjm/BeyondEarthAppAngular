@@ -1,3 +1,5 @@
+// A controller manages the app's data.
+
 app.controller('MainController', ['$scope', function($scope) {
   $scope.title = 'Beyond Earth App';
   $scope.promo = 'My Own String';

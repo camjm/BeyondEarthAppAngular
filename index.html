@@ -6,10 +6,16 @@
     <link href="css/main.css" rel="stylesheet" />
 
     <!-- Include the AngularJS library -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script> -->
     <script src="js/shared/angular.min.js"></script>
 
   </head>
+  <!--'ng-app' tells AngularJS the beyondEarthApp module will live within this element, the scope.-->
   <body ng-app="beyondEarthApp">
+    <!--The view presents the app's data through the use of expressions, filters, and directives. Users interact with and update the data via directives-->
+    <!--Directives: bind new behaviour to HTML elements. When the application runs, AngularJS walks through each element looking for directives.-->
+    <!--Expressions: display data in the controller on the page. Objects use dot notation.-->
+    <!--Filters: format data in thew view, using the pipe '|', symbol. Helps to separate the controller data from its presentation in the view.-->
 
     <div class="header">
       <div class="container">
@@ -17,6 +23,7 @@
       </div>
     </div>
 
+    <!--'ng-controller' defines the controller scope. Properties definedd within the $scope of the controller are available for use within this element-->
     <div class="main" ng-controller="MainController">
       <div class="container">
 
