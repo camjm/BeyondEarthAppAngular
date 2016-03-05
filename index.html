@@ -26,23 +26,9 @@
     <!--'ng-controller' defines the controller scope. Properties definedd within the $scope of the controller are available for use within this element-->
     <div class="main" ng-controller="MainController">
       <div class="container">
-
-        <h1>{{ title }}</h1>
-        <h2>{{ promo }}</h2>
-
-        <div ng-repeat="product in products" class="col-md-6">
-          <div class="thumbnail">
-            <img ng-src="{{ product.cover }}">
-            <p class="title">{{ product.name }}</p>
-            <p class="price">{{ product.price | currency }}</p>
-            <p class="date">{{ product.pubdate | date }}</p>
-            <div class="rating">
-              <p class="likes" ng-click="plusOne($index)">+{{ product.likes }}</p>
-              <p class="dislikes" ng-click="minusOne($index)">-{{ product.dislikes }}</p>
-            </div>
-          </div>
+        <div ng-repeat="game in games" class="card">
+          <game-info info="game"></game-info>
         </div>
-
       </div>
     </div>
 
@@ -57,6 +43,9 @@
 
     <!-- Controllers -->
     <script src="js/controllers/MainController.js"></script>
+
+    <!-- Directives -->
+    <script src="js/directives/gameInfo.js"></script>
 
   </body>
 </html>
