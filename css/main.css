@@ -18,7 +18,7 @@ html, body {
 }
 
 .main {
- background-color: #f2f2f2 ;
+ background-color: #DDDDDD ;
  padding: 40px 0;
 }
 
@@ -83,12 +83,58 @@ html, body {
  right: 20px;
 }
 
+.statistics {
+ text-align: right;
+ -webkit-user-select: none;
+    -moz-user-select: none;
+     -ms-user-select: none;
+ margin: 30px 0 -30px 20px;
+}
+
 .rating {
  text-align: right;
  -webkit-user-select: none;
     -moz-user-select: none;
      -ms-user-select: none;
  margin: 30px 0 -30px 20px;
+}
+
+.affinities {
+  display: inline-block;
+}
+
+.cityCount,
+.technologyCount,
+.purity,
+.supremacy,
+.harmony {
+  display: inline-block;
+  font-size: 15px;
+  line-height: 40px;
+  min-width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.cityCount,
+.technologyCount {
+  background: black;
+  color: #fff;
+}
+
+.purity {
+  background: rgb(242,11,59);
+  color: #fff;
+}
+
+.supremacy {
+  background: rgb(234,166,31);
+  color: #fff;
+}
+
+.harmony {
+  background: rgb(35,203,190);
+  color: #fff;
 }
 
 .likes,

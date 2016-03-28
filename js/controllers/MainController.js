@@ -2,45 +2,59 @@
 
 app.controller('MainController', ['$scope', function($scope) {
   $scope.title = 'Beyond Earth App';
-  $scope.promo = 'My Own String';
-  $scope.products = [
+  $scope.promo = 'My Saved Games';
+  $scope.games = [
     {
-      name: 'The Book of Trees',
-      price: 19,
-      pubdate: new Date('2014', '03', '08'),
-      cover: 'img/the-book-of-trees.jpg',
-      likes: 0,
-      dislikes: 0
+      description: 'My first game',
+      faction: 'Polystralia',
+      status: 'In Progress',
+      startdate: new Date('2014', '03', '08'),
+      cityCount: 13,
+      technologyCount: 19,
+      affinities: {
+        purity: 2,
+        supremacy: 3,
+        harmony: 7
+      }
     },
     {
-      name: 'Program or be Programmed',
-      price: 8,
-      pubdate: new Date('2013', '08', '01'),
-      cover: 'img/program-or-be-programmed.jpg',
-      likes: 0,
-      dislikes: 0
+      description: 'My best game',
+      faction: 'ARC',
+      status: 'In Progress',
+      startdate: new Date('2013', '08', '01'),
+      cityCount: 33,
+      technologyCount: 8,
+      affinities: {
+        purity: 2,
+        supremacy: 3,
+        harmony: 7
+      }
     },
     {
-      name: 'Book 1',
-      price: 10,
-      pubdate: new Date('2015', '01', '01'),
-      cover: 'img/the-book-of-trees.jpg',
-      likes: 0,
-      dislikes: 0
+      description: 'A very bad game',
+      faction: 'Pan Asian Cooperative',
+      status: 'In Progress',
+      startdate: new Date('2013', '08', '01'),
+      cityCount: 6,
+      technologyCount: 10,
+      affinities: {
+        purity: 2,
+        supremacy: 3,
+        harmony: 7
+      }
     },
     {
-      name: 'Book 2',
-      price: 11,
-      pubdate: new Date('2011', '12', '11'),
-      cover: 'img/program-or-be-programmed.jpg',
-      likes: 0,
-      dislikes: 0
+      description: 'I dont know',
+      faction: 'Chungsu',
+      status: 'In Progress',
+      startdate: new Date('2013', '08', '01'),
+      cityCount: 12,
+      technologyCount: 11,
+      affinities: {
+        purity: 2,
+        supremacy: 3,
+        harmony: 7
+      }
     }
   ];
-  $scope.plusOne = function(index) {
-    $scope.products[index].likes += 1;
-  };
-  $scope.minusOne = function(index) {
-    $scope.products[index].dislikes +=1;
-  };
 }]);
