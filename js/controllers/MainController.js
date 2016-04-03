@@ -1,8 +1,7 @@
 // A controller manages the app's data.
 
 app.controller('MainController', ['$scope', function($scope) {
-  $scope.title = 'Beyond Earth App';
-  $scope.promo = 'My Saved Games';
+  $scope.title = 'My Saved Games';
   $scope.games = [
     {
       description: 'My first game',
@@ -57,4 +56,34 @@ app.controller('MainController', ['$scope', function($scope) {
       }
     }
   ];
+  $scope.plusOneCity = function(index) {
+    $scope.games[index].cityCount += 1;
+  };
+  $scope.minusOneCity = function(index) {
+    $scope.games[index].cityCount -=1;
+  };
+  $scope.plusOneTechnology = function(index) {
+    $scope.games[index].technologyCount += 1;
+  };
+  $scope.minusOneTechnology = function(index) {
+    $scope.games[index].technologyCount -=1;
+  };
+  $scope.plusOnePurity = function(index) {
+    $scope.games[index].affinities.purity += 1;
+  };
+  $scope.minusOnePurity = function(index) {
+    $scope.games[index].affinities.purity -=1;
+  };
+  $scope.plusOneSupremacy = function(index) {
+    $scope.games[index].affinities.supremacy += 1;
+  };
+  $scope.minusOneSupremacy = function(index) {
+    $scope.games[index].affinities.supremacy -=1;
+  };
+  $scope.plusOneHarmony = function(index) {
+    $scope.games[index].affinities.harmony += 1;
+  };
+  $scope.minusOneHarmony = function(index) {
+    $scope.games[index].affinities.harmony -=1;
+  };
 }]);

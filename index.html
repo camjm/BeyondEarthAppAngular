@@ -27,8 +27,7 @@
     <div class="main" ng-controller="MainController">
       <div class="container">
 
-        <h1>{{ title }}</h1>
-        <h2>{{ promo }}</h2>
+        <h2>{{ title }}</h2>
 
         <div ng-repeat="game in games" class="col-md-6">
           <div class="thumbnail">
@@ -37,12 +36,12 @@
             <p class="status">{{ game.status }}</p>
             <p class="date">{{ game.startdate | date }}</p>
             <div class="statistics">
-              <span class="technologyCount">{{ game.technologyCount }}</span>
-              <span class="cityCount">{{ game.cityCount }}</span>
+              <span class="technologyCount" ng-click="plusOneTechnology($index)">{{ game.technologyCount }}</span>
+              <span class="cityCount" ng-click="plusOneCity($index)">{{ game.cityCount }}</span>
               <div class="affinities">
-                <span class="purity">{{ game.affinities.purity }}</span>
-                <span class="supremacy">{{ game.affinities.supremacy }}</span>
-                <span class="harmony">{{ game.affinities.harmony }}</span>
+                <span class="purity" ng-click="plusOnePurity($index)">{{ game.affinities.purity }}</span>
+                <span class="supremacy" ng-click="plusOneSupremacy($index)">{{ game.affinities.supremacy }}</span>
+                <span class="harmony" ng-click="plusOneHarmony($index)">{{ game.affinities.harmony }}</span>
               </div>
             </div>
           </div>
