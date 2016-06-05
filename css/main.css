@@ -1,142 +1,115 @@
 html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
-  width:100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    width: 100%;
 }
-
 .header {
-  padding: 15px;
-  background-color: #F65A5B;
+    padding: 15px;
+    background-color: #F65A5B;
 }
-
 .header h1 {
-  display: inline-block;
-  color: white;
-  margin: 15px 0;
+    display: inline-block;
+    color: white;
+    margin: 15px 0;
 }
-
 .main {
-  background-color: #DDDDDD ;
-  padding: 40px 0;
+    background-color: #DDDDDD;
+    padding: 40px 0;
 }
-
 .main h1 {
-  display: none;
-  color: #F65A5B;
-  font-size: 64px;
-  margin: 0 0 80px 0;
-  padding: 20px 0;
-  line-height: 60px;
-  width: 50%;
+    display: none;
+    color: #F65A5B;
+    font-size: 64px;
+    margin: 0 0 80px 0;
+    padding: 20px 0;
+    line-height: 60px;
+    width: 50%;
 }
-
 .main h2 {
-  background-color: #DDDDDD ;
-  color: #999999;
-  font-size: 20px;
-  margin: 0 0 40px 0;
-  padding: 20px 0;
+    background-color: #DDDDDD;
+    color: #999999;
+    font-size: 20px;
+    margin: 0 0 40px 0;
+    padding: 20px 0;
 }
-
 .thumbnail {
-  border: 0px;
-  position: relative;
-  padding: 50px;
-  border-radius: 0;
-  margin-bottom:50px;
+    border: 0px;
+    position: relative;
+    padding: 50px;
+    border-radius: 0;
+    margin-bottom: 50px;
 }
-
 .title {
-  color: #444;
-  margin: 0;
-  font-size: 18px;
-  font-weight: 800;
+    color: #444;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
 }
-
 .date {
-  color: #A3A3A3;
-  margin: 0;
-  font-size: 14px;
-  font-weight: 200;
+    color: #A3A3A3;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 200;
 }
-
 .statistics {
-  text-align: right;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+    text-align: right;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
-
 .affinities {
-  display: inline-block;
-  border: 2px solid #CCCCCC;
-  padding: 3px;
+    display: inline-block;
+    border: 2px solid #CCCCCC;
+    padding: 3px;
 }
-
-.cityCount,
-.technologyCount,
-.purity,
-.supremacy,
-.harmony {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 15px;
-  line-height: 40px;
-  min-width: 40px;
-  height: 40px;
-  text-align: center;
-  transition: background 500ms;
+.cityCount, .technologyCount, .purity, .supremacy, .harmony {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 40px;
+    min-width: 40px;
+    height: 40px;
+    text-align: center;
+    transition: background 500ms;
 }
-
-.cityCount,
-.technologyCount {
-  background: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
+.cityCount, .technologyCount {
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
-
-.cityCount:hover,
-.technologyCount:hover {
-  color: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.25);
+.cityCount:hover, .technologyCount:hover {
+    color: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.25);
 }
-
 .purity {
-  background: rgb(242,11,59);
-  color: rgb(255, 255, 255);
+    background: rgb(242, 11, 59);
+    color: rgb(255, 255, 255);
 }
-
 .purity:hover {
-  color: rgb(242, 11, 59);
-  background: rgba(242, 11, 59, 0.25);
+    color: rgb(242, 11, 59);
+    background: rgba(242, 11, 59, 0.25);
 }
-
 .supremacy {
-  background: rgb(234,166,31);
-  color: rgb(255, 255, 255);
+    background: rgb(234, 166, 31);
+    color: rgb(255, 255, 255);
 }
-
 .supremacy:hover {
-  color: rgb(234, 166, 31);
-  background: rgba(234, 166, 31, 0.25);
+    color: rgb(234, 166, 31);
+    background: rgba(234, 166, 31, 0.25);
 }
-
 .harmony {
-  background: rgb(35,203,190);
-  color: rgb(255, 255, 255);
+    background: rgb(35, 203, 190);
+    color: rgb(255, 255, 255);
 }
-
 .harmony:hover {
-  color: rgb(35, 203, 190);
-  background: rgba(35, 203, 190, 0.25);
+    color: rgb(35, 203, 190);
+    background: rgba(35, 203, 190, 0.25);
 }
-
 .footer {
-  text-align: center;
+    text-align: center;
 }
-
 .footer h2 {
-  color: #F65A5B;
-  font-size: 24px;
-  margin: 25px 0;
+    color: #F65A5B;
+    font-size: 24px;
+    margin: 25px 0;
 }
