@@ -26,7 +26,8 @@
     <!--'ng-controller' defines the controller scope. Properties definedd within the $scope of the controller are available for use within this element-->
     <div class="main" ng-controller="MainController">
       <div class="container">
-        <div ng-repeat="game in games" class="card">
+        <h2>{{ title }}</h2>
+        <div ng-repeat="game in games" class="col-md-6">
           <game-info info="game"></game-info>
         </div>
       </div>

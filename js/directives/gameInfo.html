@@ -1,7 +1,18 @@
-<img class="icon" ng-src="{{ info.icon }}">
-<h2 class="title">{{ info.title }}</h2>
-<p class="developer">{{ info.developer }}</p>
-<p class="price">{{ info.price | currency }}</p>
+<div class="thumbnail">
+  <p class="title">{{ info.description }}</p>
+  <p class="faction">{{ info.faction }}</p>
+  <p class="status">{{ info.status }}</p>
+  <p class="date">{{ info.startdate | date }}</p>
+  <div class="statistics">
+    <span class="technologyCount" ng-click="plusOneTechnology($index)">{{ info.technologyCount }}</span>
+    <span class="cityCount" ng-click="plusOneCity($index)">{{ info.cityCount }}</span>
+    <div class="affinities">
+      <span class="purity" ng-click="plusOnePurity($index)">{{ info.affinities.purity }}</span>
+      <span class="supremacy" ng-click="plusOneSupremacy($index)">{{ info.affinities.supremacy }}</span>
+      <span class="harmony" ng-click="plusOneHarmony($index)">{{ info.affinities.harmony }}</span>
+    </div>
+  </div>
+</div>
 
 <button class="btn btn-active" ng-click="download()">
   {{ buttonText }}
