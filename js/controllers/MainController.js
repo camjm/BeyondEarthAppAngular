@@ -6,7 +6,7 @@ app.controller('MainController', ['$scope','gameService', function($scope, gameS
 
     // Use the gameService to fetch the data asynchronously and store on the scope
     gameService.success(function(data) {
-        $scope.games = data;
+        $scope.games = data.Items;
     });
-    
+
 }]);

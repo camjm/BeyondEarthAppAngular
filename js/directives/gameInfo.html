@@ -1,8 +1,8 @@
 <div class="thumbnail">
-    <p class="title">{{ info.description }}</p>
-    <p class="faction">{{ info.faction }}</p>
-    <p class="status">{{ info.status }}</p>
-    <p class="date">{{ info.startdate | date }}</p>
+    <p class="title">{{ info.Description }}</p>
+    <p class="faction">{{ info.Faction.Name }}</p>
+    <p class="status">{{ info.Status.Name }}</p>
+    <p class="date">{{ info.CreatedDate | date }}</p>
     <div class="statistics">
         <span class="technologyCount" ng-click="incrementTechnology(1)">{{ info.technologyCount }}</span>
         <span class="cityCount" ng-click="incrementCity(1)">{{ info.cityCount }}</span>
