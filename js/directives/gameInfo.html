@@ -1,15 +1,17 @@
-<div class="thumbnail">
-    <p class="title">{{ info.Description }}</p>
-    <p class="faction">{{ info.Faction.Name }}</p>
-    <p class="status">{{ info.Status.Name }}</p>
-    <p class="date">{{ info.CreatedDate | date }}</p>
-    <div class="statistics">
-        <span class="technologyCount" ng-click="incrementTechnology(1)">{{ info.technologyCount }}</span>
-        <span class="cityCount" ng-click="incrementCity(1)">{{ info.cityCount }}</span>
-        <div class="affinities">
-            <span class="purity" ng-click="incrementPurity(1)">{{ info.affinities.purity }}</span>
-            <span class="supremacy" ng-click="incrementSupremacy(1)">{{ info.affinities.supremacy }}</span>
-            <span class="harmony" ng-click="incrementHarmony(1)">{{ info.affinities.harmony }}</span>
+<a href="#/games/{{ info.GameId }}">
+    <div class="thumbnail">
+        <p class="title">{{ info.Description }}</p>
+        <p class="faction">{{ info.Faction.Name }}</p>
+        <p class="status">{{ info.Status.Name }}</p>
+        <p class="date">{{ info.CreatedDate | date }}</p>
+        <div class="statistics">
+            <span class="technologyCount" ng-click="incrementTechnology(1)">{{ info.technologyCount }}</span>
+            <span class="cityCount" ng-click="incrementCity(1)">{{ info.cityCount }}</span>
+            <div class="affinities">
+                <span class="purity" ng-click="incrementPurity(1)">{{ info.affinities.purity }}</span>
+                <span class="supremacy" ng-click="incrementSupremacy(1)">{{ info.affinities.supremacy }}</span>
+                <span class="harmony" ng-click="incrementHarmony(1)">{{ info.affinities.harmony }}</span>
+            </div>
         </div>
     </div>
-</div>
+</a>

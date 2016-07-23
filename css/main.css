@@ -33,12 +33,23 @@ html, body {
     margin: 0 0 40px 0;
     padding: 20px 0;
 }
+game-info {
+    display: block;
+    background-color: #FFF;
+}
+game-info:hover a {
+    text-decoration: none;
+}
 .thumbnail {
     border: 0px;
     position: relative;
     padding: 50px;
     border-radius: 0;
     margin-bottom: 50px;
+}
+.thumbnail:hover {
+    background-color: rgba(246, 90, 91, 0.1);
+    transition: background 500ms;
 }
 .title {
     color: #444;
@@ -51,6 +62,12 @@ html, body {
     margin: 0;
     font-size: 14px;
     font-weight: 200;
+}
+.faction {
+    color: #333333;
+}
+.status {
+    color: #333333;
 }
 .statistics {
     text-align: right;
