@@ -30,6 +30,7 @@ app.factory('gameService', ['$resource', function($resource) {
 // reduces code bloat: Contoller doesn't need to manually call $http for every HTTP method
 // don't need to manage promises, etc
 
+// Defaults
 // { 'get':    {method:'GET'},
 //   'save':   {method:'POST'},
 //   'query':  {method:'GET', isArray:true},
@@ -55,7 +56,7 @@ app.factory('gameService', ['$resource', function($resource) {
 // gameService.update({gameId: 1}, {name: 'Test Game'});    - PUT call
 // (goes in the request URL)^         ^(goes in the request body)
 
-// How to handle the query string?
+// How to handle the query string? - do more research
 // gameService.query({pageNumber: 1, pageSize: 5}); -> URL: http://localhost:52204/api/v1/games?pageNumber=1&pageSize=5
 
 // Use resource as a promise:
