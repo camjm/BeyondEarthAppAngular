@@ -25,6 +25,41 @@
 
 app.factory('gameService', ['$resource', function($resource) {
 
-  return $resource('http://localhost:52204/api/v1/games?pageNumber=1&pageSize=5');
+// $resource simple and clean way of interacting with RESTful API
+// wrapper around (abstracts) $http
+// reduces code bloat: Contoller doesn't need to manually call $http for every HTTP method
+// don't need to manage promises, etc
+
+// { 'get':    {method:'GET'},
+//   'save':   {method:'POST'},
+//   'query':  {method:'GET', isArray:true},
+//   'remove': {method:'DELETE'},
+//   'delete': {method:'DELETE'} };
+
+  var gameResource = $resource('http://localhost:52204/api/v1/games/:id', {id: '@gameId'}, {
+    // add your own methods an modify the call parameters
+    update: {
+      method: 'PUT'
+    }
+  });
+
+  // return the game resource
+  return gameResource
 
 }]);
+
+// Examples
+// $scope.games = gameService.query();                      - GET call
+// $scope.game = gameService.get({gameId: 1});              - GET call
+// gameService.save({name: 'Test Game'});                   - POST call
+// gameService.update({gameId: 1}, {name: 'Test Game'});    - PUT call
+// (goes in the request URL)^         ^(goes in the request body)
+
+// How to handle the query string?
+// gameService.query({pageNumber: 1, pageSize: 5}); -> URL: http://localhost:52204/api/v1/games?pageNumber=1&pageSize=5
+
+// Use resource as a promise:
+// var query = gameService.query();
+// query.$promise.then(function(data) {
+//  $scope.games = data;
+// });
