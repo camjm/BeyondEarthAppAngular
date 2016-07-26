@@ -25,27 +25,75 @@
 
 app.factory('gameService', ['$resource', function($resource) {
 
-// $resource simple and clean way of interacting with RESTful API
-// wrapper around (abstracts) $http
-// reduces code bloat: Contoller doesn't need to manually call $http for every HTTP method
-// don't need to manage promises, etc
+    // $resource simple and clean way of interacting with RESTful API
+    // wrapper around (abstracts) $http
+    // reduces code bloat: Contoller doesn't need to manually call $http for every HTTP method
+    // don't need to manage promises, etc
 
-// Defaults
-// { 'get':    {method:'GET'},
-//   'save':   {method:'POST'},
-//   'query':  {method:'GET', isArray:true},
-//   'remove': {method:'DELETE'},
-//   'delete': {method:'DELETE'} };
+    // Defaults
+    // { 'get':    {method:'GET'},
+    //   'save':   {method:'POST'},
+    //   'query':  {method:'GET', isArray:true},
+    //   'remove': {method:'DELETE'},
+    //   'delete': {method:'DELETE'} };
 
-  var gameResource = $resource('http://localhost:52204/api/v1/games/:id', {id: '@gameId'}, {
-    // add your own methods an modify the call parameters
-    update: {
-      method: 'PUT'
+    var gameResource = $resource('http://localhost:52204/api/v1/games/:id', {
+        id: '@gameId'
+    }, {
+        // add your own methods an modify the call parameters
+        query: {
+            method: 'GET'
+        },
+        update: {
+            method: 'PUT'
+        }
+    });
+
+    return {
+        getGames: function(callback) {
+            gameResource.query().$promise.then(function(data) {
+                for (var i = 0; i < data.Items.length; i++) {
+                    var game = data.Items[i];
+                    game.cityCount = 12;
+                    game.technologyCount = 11;
+                    game.affinities = {
+                        purity: 2,
+                        supremacy: 3,
+                        harmony: 7
+                    }
+                }
+                callback(data)
+            });
+        },
+        getGame: function(gameId, callback) {
+            callback.call(this, {
+                id: gameId,
+                technologies: [{
+                    Name: 'Cam',
+                    Science: 1020
+                }, {
+                    Name: 'Beta',
+                    Science: 1200
+                }, {
+                    Name: 'Test',
+                    Science: 860
+                }],
+                cities: [{
+                    Name: 'London',
+                    Size: 12,
+                }, {
+                    Name: 'Auckland',
+                    Size: 6,
+                }, {
+                    Name: 'Madrid',
+                    Size: 2,
+                }]
+            });
+        }
     }
-  });
 
-  // return the game resource
-  return gameResource
+    // return the game resource
+    return gameResource
 
 }]);
 
