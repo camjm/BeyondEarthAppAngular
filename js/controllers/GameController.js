@@ -5,6 +5,11 @@ app.controller('GameController', ['$scope', 'gameService', '$routeParams', funct
 
     $scope.title = 'My Game';
 
+    // Use the gameService to fetch the data asynchronously and store on the scope
+    gameService.getGame($routeParams.id, function(data) { // retrieve the id from the URL
+        angular.extend($scope, data);
+    });
+
     $scope.newTechnology = null;
     $scope.newCity = null;
 
@@ -29,36 +34,5 @@ app.controller('GameController', ['$scope', 'gameService', '$routeParams', funct
     $scope.removeCity = function(city) {
         $scope.detail.cities.splice($scope.detail.cities.indexOf(city), 1);
     };
-
-    // Use the gameService to fetch the data asynchronously and store on the scope
-    gameService.success(function(data) {
-        //$scope.detail = data.Items[$routeParams.id];
-        // retrieve the id from the URL
-        $scope.detail = {
-            id:  $routeParams.id,
-            technologies: [{
-                Name: 'Cam',
-                Science: 1020
-            }, {
-                Name: 'Beta',
-                Science: 1200
-            }, {
-                Name: 'Test',
-                Science: 860
-            }],
-            cities: [{
-                Name: 'London',
-                Size: 12,
-            }, {
-                Name: 'Auckland',
-                Size: 6,
-            }, {
-                Name: 'Madrid',
-                Size: 2,
-            }]
-        };
-
-
-    });
 
 }]);
