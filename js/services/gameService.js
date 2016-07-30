@@ -51,19 +51,7 @@ app.factory('gameService', ['$resource', function($resource) {
 
     return {
         getGames: function(callback) {
-            gameResource.query().$promise.then(function(data) {
-                for (var i = 0; i < data.Items.length; i++) {
-                    var game = data.Items[i];
-                    game.cityCount = 12;
-                    game.technologyCount = 11;
-                    game.affinities = {
-                        purity: 2,
-                        supremacy: 3,
-                        harmony: 7
-                    }
-                }
-                callback(data)
-            });
+            gameResource.query().$promise.then(callback);
         },
         getGame: function(gameId, callback) {
             callback.call(this, {
