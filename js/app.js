@@ -18,6 +18,14 @@ app.config(function($routeProvider){
             controller: 'GameController',
             templateUrl: 'views/game.html'
         })
+        .when('/units/', {
+            controller: 'UnitsController',
+            templateUrl: 'views/units.html'
+        })
+        .when('/units/:id', {
+            controller: 'UnitController',
+            templateUrl: 'views/unit.html'
+        })
         .otherwise({    // if the user visits any other url just redirect to '/'
             redirectTo: '/'
         });
