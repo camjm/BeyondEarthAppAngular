@@ -1,8 +1,14 @@
-<a href="#/units/{{ info.UnitId }}">
-    <div class="thumbnail">
-        <p class="title">{{ info.Name }}</p>
-        <p class="cost">{{ info.Cost }}</p>
-        <p class="strength">{{ info.Strength }}</p>
-        <p class="technology">{{ info.TechnologyName }}</p>
+<div class="row">
+    <div class="col-xs-4">
+        {{ info.Name }}
     </div>
-</a>
+    <div class="col-xs-4">
+        {{ info.TechnologyName }}
+    </div>
+    <div class="col-xs-2">
+        <span class="badge">{{ info.Cost }}</span>
+    </div>
+    <div class="col-xs-2">
+        <span class="badge">{{ info.Strength }}</span>
+    </div>
+</div>
