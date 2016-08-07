@@ -2,11 +2,9 @@
   "name": "beyond-earth-app-angular",
   "version": "0.1.0",
   "description": "An angularjs client for BeyondEarthApp",
-  "private": true,
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -30,11 +28,5 @@
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-stylus": "^1.2.0"
-  },
-  "dependencies": {
-    "express": "3.4.0",
-    "jade": "*",
-    "stylus": "*",
-    "mongoose": "~3.6.20"
   }
 }
