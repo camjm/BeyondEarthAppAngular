@@ -1,10 +1,14 @@
 <div class="main">
     <div class="container">
-        <h2>Unit {{ UnitId }}</h2>
-        <p class="title">{{ Name }}</p>
-        <p class="cost">{{ Cost }}</p>
-        <p class="strength">{{ Strength }}</p>
-        <!-- TODO: use technologyInfo directive -->
-        </div>
+
+        <content-info info="content">
+            <h2>Unit {{ content.UnitId }}</h2>
+            <p class="title">{{ content.Name }}</p>
+            <p class="cost">{{ content.Cost }}</p>
+            <p class="strength">{{ content.Strength }}</p>
+            <!-- TODO: use technologyInfo directive -->
+            </div>
+        </content-info>
+
     </div>
 </div>

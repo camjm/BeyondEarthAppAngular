@@ -16,12 +16,10 @@ app.factory('unitService', ['$resource', function($resource) {
 
     return {
         getUnits: function(callback) {
-            unitResource.query({}, callback, errorHandler);
+            return unitResource.query();
         },
         getUnit: function(unitId, callback) {
-            unitResource.get({
-                id: unitId
-            }, callback, errorHandler);
+            return unitResource.get({id: unitId});
         },
         createUnit: function(unit, callback) {
             unitResource.save(null, unit).$promise.then(callback);

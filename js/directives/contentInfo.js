@@ -1,11 +1,11 @@
-app.directive('unitInfo', function() {
+app.directive('contentInfo', function() {
     return {
         restrict: 'E',
-        replace: true,
+        transclude: true,
         scope: {
             info: '='
         },
-        templateUrl: 'js/directives/unitInfo.html',
+        templateUrl: 'js/directives/contentInfo.html',
         link: function(scope, element, attrs) {
 
         }

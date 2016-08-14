@@ -1,14 +1,16 @@
-<div class="row">
-    <div class="col-xs-4">
-        {{ info.Name }}
+<a href="#/units/{{ info.UnitId }}" class="list-group-item">
+    <div class="row">
+        <div class="col-xs-4">
+            {{ info.Name }}
+        </div>
+        <div class="col-xs-4">
+            {{ info.TechnologyName }}
+        </div>
+        <div class="col-xs-2">
+            <span class="badge">{{ info.Cost }}</span>
+        </div>
+        <div class="col-xs-2">
+            <span class="badge">{{ info.Strength }}</span>
+        </div>
     </div>
-    <div class="col-xs-4">
-        {{ info.TechnologyName }}
-    </div>
-    <div class="col-xs-2">
-        <span class="badge">{{ info.Cost }}</span>
-    </div>
-    <div class="col-xs-2">
-        <span class="badge">{{ info.Strength }}</span>
-    </div>
-</div>
+</a>

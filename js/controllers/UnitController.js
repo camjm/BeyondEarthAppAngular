@@ -2,8 +2,6 @@ app.controller('UnitController', ['$scope', 'unitService', '$routeParams', funct
 
     $scope.title = 'My Unit';
 
-    unitService.getUnit($routeParams.id, function(data) { // retrieve the id from the URL
-        angular.extend($scope, data);
-    });
+    $scope.content = unitService.getUnit($routeParams.id);
 
 }]);

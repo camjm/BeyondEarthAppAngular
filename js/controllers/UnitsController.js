@@ -2,8 +2,6 @@ app.controller('UnitsController', ['$scope', 'unitService', function($scope, uni
 
     $scope.title = 'Units';
 
-    unitService.getUnits(function(data) {
-        angular.extend($scope, data);
-    });
+    $scope.content = unitService.getUnits();
 
 }]);
