@@ -1,12 +1,15 @@
 app.factory('unitService', ['$resource', function($resource) {
 
-    // Create resource object to interact with RESTful server-sdie data source.
+    // Create resource object to interact with RESTful server-sdie data source (backend).
     // This provides high-level behaviours without the need to interact with the low level $http service.
     var unitResource = $resource('http://localhost:52204/api/v1/units/:id', {
-        id: '@unitId'
+        id: '@unitId' // defines id when using instance (not class) methods by specifying the property to use as id
     }, {
-        query: {
+        query: {    // our query does not return an array - have to override defaults
             method: 'GET'
+        },
+        update: {
+            method: 'PUT'
         }
     });
 
@@ -16,13 +19,15 @@ app.factory('unitService', ['$resource', function($resource) {
 
     return {
         getUnits: function(callback) {
-            return unitResource.query();
+            return unitResource.query(callback);
         },
         getUnit: function(unitId, callback) {
-            return unitResource.get({id: unitId});
+            // returns an empty object which is populated automatically when the actual data comes from the server
+            return unitResource.get({id: unitId}, callback);
         },
         createUnit: function(unit, callback) {
-            unitResource.save(null, unit).$promise.then(callback);
+            // should use instance methods (unit.$save) instead of class methods?
+            unitResource.save(null, unit, callback); // is the null required?
         },
         updateUnit: function(unitId, unit, callback) {
             unitResource.update({
