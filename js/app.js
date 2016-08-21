@@ -18,6 +18,7 @@ app.config(function($routeProvider){
             controller: 'GameController',
             templateUrl: 'views/game.html'
         })
+        // Unit states
         .when('/units/', {
             controller: 'UnitsController',
             templateUrl: 'views/units.html'
@@ -26,7 +27,20 @@ app.config(function($routeProvider){
             controller: 'UnitController',
             templateUrl: 'views/unit.html'
         })
+        .when('/units/:id/edit', {
+            controller: 'UnitEditController',
+            templateUrl: 'views/unit-edit.html'
+        })
+        .when('/units/new', {
+            controller: 'UnitCreateController',
+            templateUrl: 'views/unit-add.html'
+        })
         .otherwise({    // if the user visits any other url just redirect to '/'
             redirectTo: '/'
         });
+});
+
+// make transition to 'units' state when the app starts
+app.run(function($location) {
+    $location.path('/units/');
 });
