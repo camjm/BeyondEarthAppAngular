@@ -13,11 +13,24 @@ app.factory('unitService', ['$resource', function($resource) {
         }
     });
 
+    // you can create a new instance with var unit = new unitResource();
+    // and save it: unitResource.save(unit, function() {});     -- class method
+    // or: unit.$save(function(){});                            -- instance method
+
+    // updating:
+    // var unit = unitResource.get({id: 4}, function() {
+        // unit.name = 'New Name';
+        //unit.$update(function(){
+            // success handler
+        //});
+    //});
+
     function errorHandler(httpResponse) {
         console.log(httpResponse);
     }
 
     return {
+        // GET methods are available on the class
         getUnits: function(callback) {
             return unitResource.query(callback);
         },
@@ -25,6 +38,7 @@ app.factory('unitService', ['$resource', function($resource) {
             // returns an empty object which is populated automatically when the actual data comes from the server
             return unitResource.get({id: unitId}, callback);
         },
+        // all non GET methods are aailable on instances (prefixed with '$')
         createUnit: function(unit, callback) {
             // should use instance methods (unit.$save) instead of class methods?
             unitResource.save(null, unit, callback); // is the null required?
