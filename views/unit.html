@@ -7,8 +7,9 @@
             <p class="cost">{{ content.Cost }}</p>
             <p class="strength">{{ content.Strength }}</p>
             <!-- TODO: use technologyInfo directive -->
-            <div>
+            <div class="btn-group">
                 <a class="btn btn-primary" href="#/units/{{content.UnitId}}/edit">Edit</a>
+                <a class="btn btn-danger" ng-click="deleteUnit(unit)">Delete</a>
             </div>
         </content-info>
 

@@ -1,18 +1,17 @@
-<div class="list-group-item">
-    <div class="row">
-        <div class="col-xs-4">
-            {{ info.Name }}
-        </div>
-        <div class="col-xs-4">
-            {{ info.TechnologyName }}
-        </div>
-        <div class="col-xs-2">
-            <span class="badge">{{ info.Cost }}</span>
-        </div>
-        <div class="col-xs-2">
-            <span class="badge">{{ info.Strength }}</span>
-        </div>
+<tr>
+    <td>
+        {{ info.Name }}
+    </td>
+    <td>
+        {{ info.TechnologyName }}
+    </td>
+    <td>
+        <span class="badge">{{ info.Cost }}</span>
+    </td>
+    <td>
+        <span class="badge">{{ info.Strength }}</span>
+    </td>
+    <td>
         <a class="btn btn-primary" href="#/units/{{info.UnitId}}">View</a>
-        <a class="btn btn-danger" ng-click="deleteUnit(info)">Delete</a>
-    </div>
-</div>
+    </td>
+</tr>

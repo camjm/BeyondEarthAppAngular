@@ -1,7 +1,6 @@
 app.directive('unitInfo', function() {
     return {
-        restrict: 'E',
-        replace: true,
+        restrict: 'A',
         scope: {
             info: '='
         },
