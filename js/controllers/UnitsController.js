@@ -2,6 +2,6 @@ app.controller('UnitsController', ['$scope', 'unitService', function($scope, uni
 
     $scope.title = 'Units';
 
-    $scope.content = unitService.getUnits();
+    $scope.content = unitService.query();
 
 }]);

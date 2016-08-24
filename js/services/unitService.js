@@ -13,6 +13,7 @@ app.factory('unitService', ['$resource', function($resource) {
         }
     });
 
+    return unitResource;
     // you can create a new instance with var unit = new unitResource();
     // and save it: unitResource.save(unit, function() {});     -- class method
     // or: unit.$save(function(){});                            -- instance method

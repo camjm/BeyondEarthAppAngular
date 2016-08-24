@@ -23,7 +23,7 @@ app.config(function($routeProvider){
             controller: 'UnitsController',
             templateUrl: 'views/units.html'
         })
-        .when('/units/:id', {
+        .when('/units/:id/view', {
             controller: 'UnitController',
             templateUrl: 'views/unit.html'
         })
