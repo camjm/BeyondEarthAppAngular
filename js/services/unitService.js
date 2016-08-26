@@ -3,7 +3,7 @@ app.factory('unitService', ['$resource', function($resource) {
     // Create resource object to interact with RESTful server-sdie data source (backend).
     // This provides high-level behaviours without the need to interact with the low level $http service.
     var unitResource = $resource('http://localhost:52204/api/v1/units/:id', {
-        id: '@unitId' // defines id when using instance (not class) methods by specifying the property to use as id
+        id: '@UnitId' // defines id when using instance (not class) methods by specifying the property to use as id
     }, {
         query: {    // our query does not return an array - have to override defaults
             method: 'GET'

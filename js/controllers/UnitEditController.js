@@ -10,10 +10,4 @@ app.controller('UnitEditController', ['$scope', 'unitService', '$routeParams', '
         });
     };
 
-    $scope.deleteUnit = function() {
-        $scope.content.$delete(function() {
-            $location.path('/units/');
-        });
-    };
-
 }]);
