@@ -2,15 +2,30 @@
     <div class="container">
 
         <content-info info="content">
-            <h2>Unit {{ content.UnitId }}</h2>
-            <p class="title">{{ content.Name }}</p>
-            <p class="cost">{{ content.Cost }}</p>
-            <p class="strength">{{ content.Strength }}</p>
-            <!-- TODO: use technologyInfo directive -->
-            <div class="btn-group">
-                <a class="btn btn-primary" href="#/units/{{content.UnitId}}/edit">Edit</a>
-                <a class="btn btn-danger" ng-click="deleteUnit()">Delete</a>
-            </div>
+
+            <h2>
+                {{ content.Name }}
+                <div class="pull-right">
+                    <a class="btn btn-primary" href="#/units/{{content.UnitId}}/edit">Edit</a>
+                    <a class="btn btn-danger" ng-click="deleteUnit()">Delete</a>
+                </div>
+            </h2>
+
+
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    Cost {{ content.Cost }}
+                </li>
+                <li class="list-group-item">
+                    Strength {{ content.Strength }}
+                </li>
+            </ul>
+
+            <technology-info info="content.Technology"></technology-info>
+
+
+
         </content-info>
 
     </div>
