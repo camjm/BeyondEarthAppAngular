@@ -38,7 +38,7 @@ module.exports = function(grunt) {
             },
             app: {
                 files: {
-                    "build/css/main.css": "src/styles/main.styl"
+                    "build/css/main.css": "src/styles/app.styl"
                 }
             }
         }
