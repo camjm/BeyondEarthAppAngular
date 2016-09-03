@@ -1,5 +1,9 @@
 build
 
-# Dependency directory
+# Dependency directories
+
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
+
+# https://addyosmani.com/blog/checking-in-front-end-dependencies/
+bower_components
