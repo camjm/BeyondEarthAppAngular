@@ -30,6 +30,7 @@
     "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-stylus": "^1.2.0",
-    "grunt-contrib-uglify": "^2.0.0"
+    "grunt-contrib-uglify": "^2.0.0",
+    "main-bower-files": "^2.13.1"
   }
 }
