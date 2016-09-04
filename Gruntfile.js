@@ -7,7 +7,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-stylus');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Project configuration
     grunt.initConfig({
@@ -28,8 +27,9 @@ module.exports = function(grunt) {
         },
         bower: {
             dev: {
-                base: 'bower_components', /* the path to the bower_components directory */
-                dest: 'build/vendor',
+                base: 'bower_components',
+                /* the path to the bower_components directory */
+                dest: 'build/lib',
                 options: {
                     checkExistence: true,
                     debugging: true,
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
                 }
             },
             flat: { /* flat folder/file structure */
-                dest: 'build/vendor',
+                dest: 'build/lib',
                 options: {
                     debugging: true
                 }
@@ -63,12 +63,12 @@ module.exports = function(grunt) {
                 sourceMap: true
             },
             build: {
-              expand: true,
-              flatten: false,
-              cwd: 'src/scripts/',
-              src: ['**/*.coffee'],
-              dest: 'build/js',
-              ext: '.js'
+                expand: true,
+                flatten: false,
+                cwd: 'src/scripts/',
+                src: ['**/*.coffee'],
+                dest: 'build/js',
+                ext: '.js'
             }
         },
         stylus: {
@@ -80,21 +80,10 @@ module.exports = function(grunt) {
                     "build/css/main.css": "src/styles/app.styl"
                 }
             }
-        },
-        uglify: {
-            options: {
-                banner: '<%= banner %>',
-                sourceMap: true,
-                sourceMapIn: '<%= coffee.files.dest %>.map'
-            },
-            build: {
-                src: 'build/something.js',
-                build: 'build/something.min.js'
-            }
         }
     });
 
     // Define the default task
-    grunt.registerTask('default', ['jshint', 'clean', 'bower:flat', 'jade', 'coffee', 'stylus', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'clean', 'bower:flat', 'jade', 'coffee', 'stylus']);
 
 };
