@@ -59,9 +59,17 @@ module.exports = function(grunt) {
         },
         coffee: {
             options: {
+                bare: true,
                 sourceMap: true
             },
-            files: {}
+            build: {
+              expand: true,
+              flatten: false,
+              cwd: 'src/scripts/',
+              src: ['**/*.coffee'],
+              dest: 'build/js',
+              ext: '.js'
+            }
         },
         stylus: {
             options: {
@@ -87,6 +95,6 @@ module.exports = function(grunt) {
     });
 
     // Define the default task
-    grunt.registerTask('default', ['jshint', 'clean', 'bower:flat', 'jade', 'stylus', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'clean', 'bower:flat', 'jade', 'coffee', 'stylus', 'uglify']);
 
 };
