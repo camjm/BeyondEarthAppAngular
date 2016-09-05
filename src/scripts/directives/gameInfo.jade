@@ -1,0 +1,13 @@
+a(href="#/games/{{ info.GameId }}")
+  div.thumbnail
+    p.title {{ info.Description }}
+    p.faction {{ info.FactionName }}
+    p.status {{ info.StatusName }}
+    p.date {{ info.CreatedDate | date }}
+    div.statistics
+      span.technologyCount(ng-click="incrementTechnology(1)") {{ info.TechnologiesCount }}
+      span.cityCount(ng-click="incrementCity(1)") {{ info.CitiesCount }}
+      div.affinities
+        span.purity(ng-click="incrementPurity(1)") {{ info.Purity }}
+        span.supremacy(ng-click="incrementSupremacy(1)") {{ info.Supremacy }}
+        span.harmony(ng-click="incrementHarmony(1)") {{ info.Harmony }}

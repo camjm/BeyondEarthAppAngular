@@ -11,9 +11,10 @@ module.exports = function(grunt) {
     // Project configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        banner: '/*! <%= pkg.name %> -v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-            '* <%= pkg.homepage %>\n' +
-            '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %> */\n',
+        banner:
+            '/*!<%= pkg.name %> -v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+            ' * <%= pkg.homepage %>\n' +
+            ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %> */\n',
         jshint: {
             options: {
                 curly: true,
@@ -28,7 +29,6 @@ module.exports = function(grunt) {
         bower: {
             dev: {
                 base: 'bower_components',
-                /* the path to the bower_components directory */
                 dest: 'build/lib',
                 options: {
                     checkExistence: true,
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
                     }
                 }
             },
-            flat: { /* flat folder/file structure */
+            flat: {
                 dest: 'build/lib',
                 options: {
                     debugging: true
@@ -55,6 +55,14 @@ module.exports = function(grunt) {
             app: {
                 src: "src/views/app.jade",
                 dest: "build/index.html"
+            },
+            directives: {
+                expand: true,
+                flatten: false,
+                cwd: 'src/scripts/directives',
+                src: ['**/*.jade'],
+                dest: 'build/js/directives',
+                ext: '.html'
             }
         },
         coffee: {
