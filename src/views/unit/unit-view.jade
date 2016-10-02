@@ -1,0 +1,16 @@
+div.main
+  div.container
+  
+    content-info(info='content')
+    
+      h2
+        | {{ content.Name }}
+        div.pull-right
+          a.btn.btn-primary(href='#/units/{{content.UnitId}}/edit') Edit
+          a.btn.btn-danger(ng-click='deleteUnit()') Delete
+          
+      ul.list-group
+        li.list-group-item Cost {{ content.Cost }}
+        li.list-group-item Strength {{ content.Strength }}
+
+      technology-info(info='content.Technology')

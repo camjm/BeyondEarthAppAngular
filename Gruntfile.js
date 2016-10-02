@@ -50,11 +50,20 @@ module.exports = function(grunt) {
         // Compilation
         jade: {
             options: {
-                pretty: true
+                pretty: true,
+                doctype: "html"
             },
             app: {
                 src: "src/views/app.jade",
                 dest: "build/index.html"
+            },
+            views: {
+              expand: true,
+              flatten: false,
+              cwd: 'src/views/unit',
+              src: "*.jade",
+              dest: "build/views/unit",
+              ext: '.html'
             },
             directives: {
                 expand: true,

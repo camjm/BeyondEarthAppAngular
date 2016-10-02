@@ -1,0 +1,23 @@
+div.form-group
+  label.col-xs-4.control-label(for='name') Name
+  div.col-xs-8
+    input.form-control(id='name', type='text', placeholder='Unit Name', ng-model='content.Name')
+    
+div.form-group
+  label.col-xs-4.control-label(for='cost') Cost
+  div.col-xs-8
+    input.form-control(id='cost', type='text', placeholder='Unit Cost', ng-model='content.Cost')
+    
+div.form-group
+  label.col-xs-4.control-label(for='strength') Strength
+  div.col-xs-8
+    input.form-control(id='strength', type='text', placeholder='Unit Strength', ng-model='content.Strength')
+
+div.form-group
+  label.col-xs-4.control-label(for='technology') Technology
+  div.col-xs-8
+    select.form-control(id='technology', ng-model='content.Technology', ng-options='technology.Name for technology in technologies track by technology.TechnologyId')
+
+div.form-group
+  div.col-xs-offset-4.col-xs-8
+    input.btn.btn-primary(type='submit', value='Save')

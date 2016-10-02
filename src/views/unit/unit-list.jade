@@ -1,0 +1,18 @@
+div.main
+  div.container
+  
+    h2 {{ title }}
+    
+    content-info(info='content')
+      a.btn.btn-primary(href='#/units/new') Add New Unit
+      table.table
+        thead
+          tr
+            th Name
+            th Technology
+            th Cost
+            th Strength
+            th
+        tbody
+            tr(unit-info, ng-repeat='unit in content.Items', info='unit')
+      page-info(info='content.Links')
