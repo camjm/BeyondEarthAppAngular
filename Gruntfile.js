@@ -1,5 +1,8 @@
 module.exports = function(grunt) {
 
+    // Runtime options
+    var target = grunt.option('target') || 'dev';
+
     // Load the task plugins
     grunt.loadNpmTasks('main-bower-files');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -8,6 +11,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadTasks('./tasks');
 
     // Project configuration
@@ -57,7 +62,7 @@ module.exports = function(grunt) {
         // Compilation
         jade: {
             options: {
-                pretty: true,
+                pretty: target === 'dev',
                 doctype: "html"
             },
             app: {
@@ -97,7 +102,7 @@ module.exports = function(grunt) {
         },
         stylus: {
             options: {
-                compress: false
+                compress: target !== 'dev'
             },
             app: {
                 files: {
@@ -128,11 +133,34 @@ module.exports = function(grunt) {
             files: 'src/views/**.*.jade',
             tasks: ['clean:views', 'jade']
           }
+        },
+        // Dist
+        concat: {
+          options: {
+            banner: '<%= banner %>',
+            stripBanners: true,
+            sourceMap: true
+          },
+          dist: {
+            src: 'build/js/**/*.js',
+            dest: 'build/js/<%= pkg.name %>-<%= pkg.version %>.js'
+          }
+        },
+        uglify: {
+          options: {
+            banner: '<%= banner %>',
+            sourceMap: true,
+          },
+          dist: {
+            src: 'build/js/<%= pkg.name %>-<%= pkg.version %>.js',
+            dest: 'build/js/<%= pkg.name %>-<%= pkg.version %>.min.js'
+          }
         }
     });
 
     // Define the default task
     grunt.registerTask('default', ['jshint', 'clean:all', 'bower:flat', 'jade', 'coffee', 'stylus', 'logger:deploy', 'webrequest']);
+    grunt.registerTask('dist', ['default', 'concat:dist', 'uglify:dist']);
     grunt.registerTask('watching', ['watch']);
 
 };
