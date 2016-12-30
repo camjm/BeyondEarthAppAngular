@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     var done = this.async();
     this.files.forEach(function(file) {
       var logFile = file.dest;
-      var message = file.message + '\n';
+      var message = getMessage(file.message) + '\n';
       grunt.log.write('Logging \'%s\' in \'%s\'... ', message, logFile);
       fs.appendFile(logFile, message, function(err) {
         if (err) {
@@ -19,5 +19,13 @@ module.exports = function(grunt) {
       });
     });
   });
+
+  function getMessage(message) {
+    if (typeof message === 'function') {
+      return message();
+    } else {
+      return message;
+    }
+  }
 
 };

@@ -112,7 +112,7 @@ module.exports = function(grunt) {
         logger: {
           deploy: {
             dest: 'deploy.log',
-            message: 'Deployment on ' + new Date()
+            message: function() { return 'Deployment on ' + new Date(); }
           },
         },
         watch: {
