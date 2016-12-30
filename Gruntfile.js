@@ -7,6 +7,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-stylus');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Project configuration
     grunt.initConfig({
@@ -24,7 +25,10 @@ module.exports = function(grunt) {
             test: "test/**/*.js"
         },
         clean: {
-            src: ['build']
+            all: ['build'],
+            scripts: ['build/js'],
+            styles: ['build/css'],
+            views: ['build/views']
         },
         bower: {
             dev: {
@@ -97,10 +101,25 @@ module.exports = function(grunt) {
                     "build/css/main.css": "src/styles/app.styl"
                 }
             }
+        },
+        watch: {
+          scripts: {
+            files: 'src/scripts/**/*.coffee',
+            tasks: ['clean:scripts', 'coffee']
+          },
+          styles: {
+            files: 'src/styles/**/*.styl',
+            tasks: ['clean:styles', 'stylus']
+          },
+          views: {
+            files: 'src/views/**.*.jade',
+            tasks: ['clean:views', 'jade']
+          }
         }
     });
 
     // Define the default task
-    grunt.registerTask('default', ['jshint', 'clean', 'bower:flat', 'jade', 'coffee', 'stylus']);
+    grunt.registerTask('default', ['jshint', 'clean:all', 'bower:flat', 'jade', 'coffee', 'stylus']);
+    grunt.registerTask('watching', ['watch']);
 
 };
