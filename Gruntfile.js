@@ -8,6 +8,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-stylus');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadTasks('./tasks');
 
     // Project configuration
     grunt.initConfig({
@@ -16,12 +17,14 @@ module.exports = function(grunt) {
             '/*!<%= pkg.name %> -v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
             ' * <%= pkg.homepage %>\n' +
             ' * Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author %> */\n',
+        // Pre-Compilation
         jshint: {
             options: {
                 curly: true,
                 eqeqeq: true
             },
             grunt: "Gruntfile.js",
+            tasks: "tasks/**/*.js",
             test: "test/**/*.js"
         },
         clean: {
@@ -102,6 +105,10 @@ module.exports = function(grunt) {
                 }
             }
         },
+        // Misc
+        webrequest: {
+          url: 'http://www.google.com' // TODO: local address
+        },
         watch: {
           scripts: {
             files: 'src/scripts/**/*.coffee',
@@ -119,7 +126,7 @@ module.exports = function(grunt) {
     });
 
     // Define the default task
-    grunt.registerTask('default', ['jshint', 'clean:all', 'bower:flat', 'jade', 'coffee', 'stylus']);
+    grunt.registerTask('default', ['jshint', 'clean:all', 'bower:flat', 'jade', 'coffee', 'stylus', 'webrequest']);
     grunt.registerTask('watching', ['watch']);
 
 };
