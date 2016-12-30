@@ -107,7 +107,13 @@ module.exports = function(grunt) {
         },
         // Misc
         webrequest: {
-          url: 'http://www.google.com' // TODO: local address
+          url: 'http://www.google.com' //TODO: make local address
+        },
+        logger: {
+          deploy: {
+            dest: 'deploy.log',
+            message: 'Deployment on ' + new Date()
+          },
         },
         watch: {
           scripts: {
@@ -126,7 +132,7 @@ module.exports = function(grunt) {
     });
 
     // Define the default task
-    grunt.registerTask('default', ['jshint', 'clean:all', 'bower:flat', 'jade', 'coffee', 'stylus', 'webrequest']);
+    grunt.registerTask('default', ['jshint', 'clean:all', 'bower:flat', 'jade', 'coffee', 'stylus', 'logger:deploy', 'webrequest']);
     grunt.registerTask('watching', ['watch']);
 
 };

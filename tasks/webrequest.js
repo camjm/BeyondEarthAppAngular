@@ -1,5 +1,5 @@
 var request = require('request');      // an npm package
-// se documentation for how to user the grunt logger: http://gruntjs.com/api/grunt.log
+// see documentation for how to user the grunt logger: http://gruntjs.com/api/grunt.log
 
 module.exports = function(grunt) {
 
