@@ -124,15 +124,15 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: 'src/scripts/**/*.coffee',
-        tasks: ['clean:scripts', 'coffee']
+        tasks: ['clean:scripts', 'scripts']
       },
       styles: {
         files: 'src/styles/**/*.styl',
-        tasks: ['clean:styles', 'stylus']
+        tasks: ['clean:styles', 'styles']
       },
       views: {
         files: 'src/views/**.*.jade',
-        tasks: ['clean:views', 'jade']
+        tasks: ['clean:views', 'views']
       }
     },
     // Optimization (use cssmin and htmlmin plugins too?)
@@ -172,12 +172,16 @@ module.exports = function(grunt) {
     grunt.registerTask('views', ['jade']);
   }
 
-  // Define the default task
-  grunt.registerTask('default',
-    ['jshint', 'clean:all', 'bower:flat', 'views', 'scripts', 'styles', 'logger:deploy', 'webrequest']);
+  grunt.registerTask('build',
+    'compiles the source files',
+    ['views', 'scripts', 'styles']);
 
   grunt.registerTask('watching',
-    'watches the scripts, views, and styles files and compiles them',
-    ['watch']);
+    'builds and watches the scripts, views, and styles files and compiles them',
+    ['build', 'watch']);
+
+  // Define the default task
+  grunt.registerTask('default',
+    ['jshint', 'clean:all', 'bower:flat', 'build', 'logger:deploy', 'webrequest']);
 
 };
