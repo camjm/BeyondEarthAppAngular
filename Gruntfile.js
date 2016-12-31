@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   // Runtime options
-  var target = grunt.option('target') || 'dev';
+  var env = grunt.option('env') || 'dev';
 
   // Load the task plugins
   grunt.loadNpmTasks('main-bower-files');
@@ -61,7 +61,7 @@ module.exports = function(grunt) {
     // Compilation
     jade: {
       options: {
-        pretty: target === 'dev',
+        pretty: env !== 'prod',
         doctype: "html"
       },
       app: {
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
     },
     stylus: {
       options: {
-        compress: target !== 'dev'
+        compress: env === 'prod'
       },
       app: {
         files: {
@@ -135,8 +135,8 @@ module.exports = function(grunt) {
         tasks: ['clean:views', 'jade']
       }
     },
-    // Dist
-    concat: {
+    // Optimization (use cssmin and htmlmin plugins too?)
+    concat: { // concatenation should be done with coffee task?
       options: {
         banner: '<%= banner %>',
         stripBanners: true,
@@ -159,13 +159,25 @@ module.exports = function(grunt) {
     }
   });
 
-  // Define the default task
-  grunt.registerTask('default', ['jshint', 'clean:all', 'bower:flat', 'jade', 'coffee', 'stylus', 'logger:deploy', 'webrequest']);
+  // Environment specific tasks
+  if (env === 'prod') {
+    // Register tasks to compile and minify
+    grunt.registerTask('scripts', ['coffee', 'concat:dist', 'uglify:dist']);
+    grunt.registerTask('styles', ['stylus']); // cssmin?
+    grunt.registerTask('views', ['jade']); // htmlmin?
+  } else {
+    // Register tasks to just compile
+    grunt.registerTask('scripts', ['coffee']);
+    grunt.registerTask('styles', ['stylus']);
+    grunt.registerTask('views', ['jade']);
+  }
 
-  grunt.registerTask('dist',
-    'minifies all build javascripts into one distributable javascript file', ['default', 'concat:dist', 'uglify:dist']);
+  // Define the default task
+  grunt.registerTask('default',
+    ['jshint', 'clean:all', 'bower:flat', 'views', 'scripts', 'styles', 'logger:deploy', 'webrequest']);
 
   grunt.registerTask('watching',
-    'watches the scripts, views, and styles files and compiles them', ['watch']);
+    'watches the scripts, views, and styles files and compiles them',
+    ['watch']);
 
 };
