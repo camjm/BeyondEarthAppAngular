@@ -7,7 +7,7 @@ app = angular.module('beyondEarthApp', [
 app.config [
   '$httpProvider'
   ($httpProvider) ->
-    $httpProvider.defaults.headers.common['Authorization'] = 'Basic YmhvZ2c6aWdub3JlZA=='
+    $httpProvider.defaults.headers.common.Authorization = 'Basic YmhvZ2c6aWdub3JlZA=='
     return
 ]
 
