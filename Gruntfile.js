@@ -160,7 +160,13 @@ module.exports = function(grunt) {
 
     // Define the default task
     grunt.registerTask('default', ['jshint', 'clean:all', 'bower:flat', 'jade', 'coffee', 'stylus', 'logger:deploy', 'webrequest']);
-    grunt.registerTask('dist', ['default', 'concat:dist', 'uglify:dist']);
-    grunt.registerTask('watching', ['watch']);
+
+    grunt.registerTask('dist',
+      'minifies all build javascripts into one distributable javascript file',
+      ['default', 'concat:dist', 'uglify:dist']);
+
+    grunt.registerTask('watching',
+      'watches the scripts, views, and styles files and compiles them',
+      ['watch']);
 
 };

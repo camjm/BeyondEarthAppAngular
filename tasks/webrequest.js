@@ -3,8 +3,9 @@ var request = require('request');      // an npm package
 
 module.exports = function(grunt) {
 
-  grunt.registerTask('webrequest', '', function() {
+  grunt.registerTask('webrequest', 'makes a simple web request', function() {
     var done = this.async();
+    grunt.config.requires('webrequest.url');
     var url = grunt.config('webrequest.url');
     grunt.log.write('Requesting \'%s\'... ', url);
     request(url, function(err, response, contents){

@@ -4,6 +4,7 @@ module.exports = function(grunt) {
 
   grunt.registerMultiTask('logger', 'general purpose logger', function() {
     var done = this.async();
+    var target = this.target;
     this.files.forEach(function(file) {
       var logFile = file.dest;
       var message = getMessage(file.message) + '\n';
@@ -12,7 +13,7 @@ module.exports = function(grunt) {
         if (err) {
           grunt.log.error(err.message);
         } else {
-          grunt.log.ok('Log successful');
+          grunt.log.ok('Log successful (%s)', target);
         }
         done();
         return;
