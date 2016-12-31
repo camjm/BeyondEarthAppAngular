@@ -1,4 +1,10 @@
 build
+
+# Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Logs
+logs
 *.log
 
 # Dependency directories
