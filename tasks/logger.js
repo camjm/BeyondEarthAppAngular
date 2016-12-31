@@ -1,4 +1,4 @@
-var fs = require('fs');     // a built-in node package
+var fs = require('fs'); // a built-in node package
 
 module.exports = function(grunt) {
 

@@ -1,4 +1,4 @@
-var request = require('request');      // an npm package
+var request = require('request'); // an npm package
 // see documentation for how to user the grunt logger: http://gruntjs.com/api/grunt.log
 
 module.exports = function(grunt) {
@@ -8,7 +8,7 @@ module.exports = function(grunt) {
     grunt.config.requires('webrequest.url');
     var url = grunt.config('webrequest.url');
     grunt.log.write('Requesting \'%s\'... ', url);
-    request(url, function(err, response, contents){
+    request(url, function(err, response, contents) {
       if (err) {
         grunt.log.error(err.message);
       } else if (response.statusCode !== 200) {
