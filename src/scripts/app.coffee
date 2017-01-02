@@ -1,9 +1,10 @@
-# Create a new module called 'beyondEarthApp'. A module contains the different components of an AngularJS app.
+# Create a new module called 'beyondEarthApp'. A module contains the different components of an [AngularJS](https://angularjs.org/) app.
 app = angular.module('beyondEarthApp', [
   'ngRoute'
   'ngResource'
 ])
 
+# Temporary configuration hack.
 app.config [
   '$httpProvider'
   ($httpProvider) ->
@@ -11,18 +12,19 @@ app.config [
     return
 ]
 
-# Routes are a way to manage apps containing more views.
-# Templates are views that display different pieces of data, based on the URL the user is visiting.
+# Routes
+# ------
+# Routes are a way to manage apps containing more views. Templates are views that display different pieces of data, based on the URL the user is visiting.
 app.config ($routeProvider) ->
-    # user $routeProvider to define application routes.
-    $routeProvider  # When links are clicked, the page doesn't fully reload, only the view (specified by ng-view) changes.
-        .when '/',     # when a user visits '/', a view will be constructed by injecting home.html into the <div ng-view> element
+    # Use `$routeProvider` to define application routes. When links are clicked, the page doesn't fully reload, only the view (specified by the `ng-view` attribute) changes.
+    $routeProvider
+        # For example, when a user visits `/`, a view will be constructed by injecting `home.html` into the `<div ng-view>` element.
+        .when '/',
             controller: 'HomeController'
             templateUrl: 'views/home.html'
         .when '/games/:id',
             controller: 'GameController'
             templateUrl: 'views/game.html'
-        # Unit states
         .when '/units/',
             controller: 'UnitsController'
             templateUrl: 'views/units.html'
@@ -35,11 +37,12 @@ app.config ($routeProvider) ->
         .when '/units/new',
             controller: 'UnitCreateController'
             templateUrl: 'views/unit-add.html'
-        .otherwise     # if the user visits any other url just redirect to '/'
+        # If the user visits any other url just redirect to `/`
+        .otherwise
             redirectTo: '/'
     return
 
-# make transition to 'units' state when the app starts
+# Transition to `units` state when the app starts.
 app.run ($location) ->
   $location.path '/units/'
   return
