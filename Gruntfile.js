@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-docco');
   grunt.loadTasks('./tasks');
 
@@ -134,6 +135,15 @@ module.exports = function(grunt) {
         tasks: ['clean:views', 'views']
       }
     },
+    connect: {
+      server: {
+        options: {
+          port: 8000,
+          base: 'build',
+          open: true
+        }
+      }
+    },
     docco: {
       debug: {
         src: ['src/**/*.coffee'],
@@ -185,7 +195,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('watching',
     'builds and watches the scripts, views, and styles files and compiles them',
-    ['build', 'watch']);
+    ['build', 'connect:server', 'watch']);
 
   // Define the default task
   grunt.registerTask('default',
