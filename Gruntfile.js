@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-docco');
   grunt.loadTasks('./tasks');
 
   // Project configuration
@@ -131,6 +132,14 @@ module.exports = function(grunt) {
       views: {
         files: 'src/views/**.*.jade',
         tasks: ['clean:views', 'views']
+      }
+    },
+    docco: {
+      debug: {
+        src: ['src/**/*.coffee'],
+        options: {
+          output: 'build/docs'
+        }
       }
     },
     // Optimization (use cssmin and htmlmin plugins too?)
