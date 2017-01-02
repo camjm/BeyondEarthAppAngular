@@ -38,23 +38,21 @@ module.exports = function(grunt) {
       views: ['build/views']
     },
     bower: {
-      dev: {
-        base: 'bower_components',
-        dest: 'build/lib',
-        options: {
-          checkExistence: true,
-          debugging: true,
-          paths: {
-            bowerDirectory: 'bower_components',
-            bowerrc: '.bowerrc',
-            bowerJson: 'bower.json'
-          }
-        }
+      options: {
+        checkExistence: true,
+        debugging: true
       },
-      flat: {
+      dev: {
         dest: 'build/lib',
         options: {
-          debugging: true
+          overrides: {
+            bootstrap: {
+              main: [
+                "dist/js/bootstrap.js",
+                "dist/css/bootstrap.css"
+              ]
+            }
+          }
         }
       }
     },
@@ -182,6 +180,6 @@ module.exports = function(grunt) {
 
   // Define the default task
   grunt.registerTask('default',
-    ['jshint', 'clean:all', 'bower:flat', 'build', 'logger:deploy', 'webrequest']);
+    ['jshint', 'clean:all', 'bower:dev', 'build', 'logger:deploy', 'webrequest']);
 
 };
