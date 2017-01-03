@@ -199,6 +199,6 @@ module.exports = function(grunt) {
 
   // Define the default task
   grunt.registerTask('default',
-    ['jshint', 'clean:all', 'bower:dev', 'build', 'logger:deploy', 'webrequest']);
+    ['jshint', 'clean:all', 'bower:dev', 'build', 'docco:debug', 'logger:deploy', 'webrequest']);
 
 };

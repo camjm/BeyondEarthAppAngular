@@ -1,93 +1,31 @@
-# Fetches the game data from the server
-# Just like directives are a way to make standalone UI components, services are a way to make standalone communication logic
-# factory() used to create new services
-# app.factory('gameService', ['$http', function($http) {
-#
-#         return $http.get('http://localhost:52204/api/v1/games?pageNumber=1&pageSize=5').success(function(data) {
-#             // add demo data
-#             for (var i = 0; i < data.Items.length; i++) {
-#                 var game = data.Items[i];
-#                 game.cityCount = 12;
-#                 game.technologyCount = 11;
-#                 game.affinities = {
-#                     purity: 2,
-#                     supremacy: 3,
-#                     harmony: 7
-#                 }
-#             }
-#             return data;
-#         }).error(function(err) {
-#             return err;
-#         });
-#
-# }]);
+# Fetches Game data from the backend.
+# Abstracts the communication logic into a standalone service, so controllers don't get code-bloat or need to manage promises.
+# `factory()` is used to create re-usable services.
 app.factory 'gameService', [
   '$resource'
   ($resource) ->
-    # $resource simple and clean way of interacting with RESTful API
-    # wrapper around (abstracts) $http
-    # reduces code bloat: Contoller doesn't need to manually call $http for every HTTP method
-    # don't need to manage promises, etc
-    # Defaults
-    # { 'get':    {method:'GET'},
-    #   'save':   {method:'POST'},
-    #   'query':  {method:'GET', isArray:true},
-    #   'remove': {method:'DELETE'},
-    #   'delete': {method:'DELETE'} };
-    gameResource = $resource('http://localhost:52204/api/v1/games/:id', { id: '@gameId' },
+    url = 'http://localhost:52204/api/v1/games/:id'
+    parameters =
+      id: '@GameId'
+    actions =
+      # The API doesn't return an array, so override the default.
       query: method: 'GET'
-      update: method: 'PUT')
-    return {
-      getGames: (callback) ->
-        gameResource.query().$promise.then callback
-        return
-      getGame: (gameId, callback) ->
-        callback.call this,
-          id: gameId
-          technologies: [
-            {
-              Name: 'Cam'
-              Science: 1020
-            }
-            {
-              Name: 'Beta'
-              Science: 1200
-            }
-            {
-              Name: 'Test'
-              Science: 860
-            }
-          ]
-          cities: [
-            {
-              Name: 'London'
-              Size: 12
-            }
-            {
-              Name: 'Auckland'
-              Size: 6
-            }
-            {
-              Name: 'Madrid'
-              Size: 2
-            }
-          ]
-        return
-
-    }
-    # return the game resource
-    gameResource
+      # No PUT method by default.
+      update: method: 'PUT'
+    # Resource
+    # --------
+    # Create and return the resource object to cleanly and simply interact with RESTful server-side data source.
+    # This provides high-level behaviours without the need to interact with the low level $http service.
+    $resource(url, parameters, actions)
 ]
-# Examples
-# $scope.games = gameService.query();                      - GET call
-# $scope.game = gameService.get({gameId: 1});              - GET call
-# gameService.save({name: 'Test Game'});                   - POST call
-# gameService.update({gameId: 1}, {name: 'Test Game'});    - PUT call
-# (goes in the request URL)^         ^(goes in the request body)
-# How to handle the query string? - do more research
-# gameService.query({pageNumber: 1, pageSize: 5}); -> URL: http://localhost:52204/api/v1/games?pageNumber=1&pageSize=5
-# Use resource as a promise:
-# var query = gameService.query();
-# query.$promise.then(function(data) {
-#  $scope.games = data;
-# });
+
+# Usage
+# -----
+# Use the resource class methods for read operations.
+# GET: `$scope.resources = resourceService.query({pageNumber: 1, pageSize: 5});`
+# GET: `$scope.resource = resourceService.get({id: 1});`
+# Create a new instance of the resource: `new resourceService();`
+# Use the resource instance methods for write operations.
+# DELETE: `$scope.resource.$delete(function() {});`
+# POST: `$scope.resource.$save(function() {});`
+# PUT: `$scope.resource.$update(function() {});`

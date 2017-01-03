@@ -1,44 +1,31 @@
+# Fetches Unit data from the backend.
+# Abstracts the communication logic into a standalone service, so controllers don't get code-bloat or need to manage promises.
+# `factory()` is used to create re-usable services.
 app.factory 'unitService', [
   '$resource'
   ($resource) ->
-    # Create resource object to interact with RESTful server-sdie data source (backend).
-    # This provides high-level behaviours without the need to interact with the low level $http service.
-    unitResource = $resource('http://localhost:52204/api/v1/units/:id', { id: '@UnitId' },
+    url = 'http://localhost:52204/api/v1/units/:id'
+    parameters =
+      id: '@UnitId'
+    actions =
+      # The API doesn't return an array, so override the default.
       query: method: 'GET'
-      update: method: 'PUT')
-    # you can create a new instance with var unit = new unitResource();
-    # and save it: unitResource.save(unit, function() {});     -- class method
-    # or: unit.$save(function(){});                            -- instance method
-    # updating:
-    # var unit = unitResource.get({id: 4}, function() {
-    # unit.name = 'New Name';
-    #unit.$update(function(){
-    # success handler
-    #});
-    #});
-
-    errorHandler = (httpResponse) ->
-      console.log httpResponse
-      return
-
-    return unitResource
-    {
-      getUnits: (callback) ->
-        unitResource.query callback
-      getUnit: (unitId, callback) ->
-        # returns an empty object which is populated automatically when the actual data comes from the server
-        unitResource.get { id: unitId }, callback
-      createUnit: (unit, callback) ->
-        # should use instance methods (unit.$save) instead of class methods?
-        unitResource.save null, unit, callback
-        # is the null required?
-        return
-      updateUnit: (unitId, unit, callback) ->
-        unitResource.update({ id: unitId }, unit).$promise.then callback
-        return
-      deleteUnit: (unitId, callback) ->
-        unitResource.delete(id: unitId).$promise.then callback
-        return
-
-    }
+      # No PUT method by default.
+      update: method: 'PUT'
+    # Resource
+    # --------
+    # Create and return the resource object to cleanly and simply interact with RESTful server-side data source.
+    # This provides high-level behaviours without the need to interact with the low level $http service.
+    $resource(url, parameters, actions)
 ]
+
+# Usage
+# -----
+# Use the resource class methods for read operations.
+# GET: `$scope.resources = resourceService.query({pageNumber: 1, pageSize: 5});`
+# GET: `$scope.resource = resourceService.get({id: 1});`
+# Create a new instance of the resource: `new resourceService();`
+# Use the resource instance methods for write operations.
+# DELETE: `$scope.resource.$delete(function() {});`
+# POST: `$scope.resource.$save(function() {});`
+# PUT: `$scope.resource.$update(function() {});`
