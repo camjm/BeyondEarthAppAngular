@@ -21,7 +21,9 @@ app.config [
   ($resourceProvider) ->
     $resourceProvider.defaults.actions =
       # The API doesn't return an array, so override the default.
-      query: method: 'GET'
+      query:
+        method: 'GET'
+        cancellable: true
       # No PUT method by default.
       update: method: 'PUT'
 ]
