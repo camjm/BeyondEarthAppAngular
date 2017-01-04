@@ -1,5 +1,5 @@
 # Fetches Unit data from the backend.
-app.factory 'unitService', [
+angular.module('beyondEarthApp').factory 'unitService', [
   '$resource'
   ($resource) ->
     url = 'http://localhost:52204/api/v1/units/:id'

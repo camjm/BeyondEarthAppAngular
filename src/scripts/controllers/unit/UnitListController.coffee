@@ -1,4 +1,4 @@
-app.controller 'UnitListController', [
+angular.module('beyondEarthApp').controller 'UnitListController', [
   '$scope'
   'unitService'
   ($scope, unitService) ->

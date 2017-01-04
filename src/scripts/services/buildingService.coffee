@@ -1,5 +1,5 @@
 # Fetches Building data from the backend.
-app.factory 'buildingService', [
+angular.module('beyondEarthApp').factory 'buildingService', [
   '$resource'
   ($resource) ->
     url = 'http://localhost:52204/api/v1/buildings/:id'

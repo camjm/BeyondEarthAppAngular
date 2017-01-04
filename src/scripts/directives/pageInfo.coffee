@@ -1,4 +1,4 @@
-app.directive 'pageInfo', ->
+angular.module('beyondEarthApp').directive 'pageInfo', ->
   {
     restrict: 'E'
     scope: info: '='

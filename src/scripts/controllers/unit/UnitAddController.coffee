@@ -1,4 +1,4 @@
-app.controller 'UnitAddController', [
+angular.module('beyondEarthApp').controller 'UnitAddController', [
   '$scope'
   'unitService'
   '$routeParams'

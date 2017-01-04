@@ -1,5 +1,5 @@
 # A controller manages the app's data.
-app.controller 'HomeController', [
+angular.module('beyondEarthApp').controller 'HomeController', [
   '$scope'
   'gameService'
   ($scope, gameService) ->

@@ -1,4 +1,4 @@
-app.directive 'technologyInfo', ->
+angular.module('beyondEarthApp').directive 'technologyInfo', ->
   {
     restrict: 'E'
     replace: true

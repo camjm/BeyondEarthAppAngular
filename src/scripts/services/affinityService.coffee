@@ -1,5 +1,5 @@
 # Fetches Affinity data from the backend.
-app.factory 'affinityService', [
+angular.module('beyondEarthApp').factory 'affinityService', [
   '$resource'
   ($resource) ->
     url = 'http://localhost:52204/api/v1/affinities/:id'

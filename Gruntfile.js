@@ -34,10 +34,7 @@ module.exports = function(grunt) {
       test: "test/**/*.js"
     },
     clean: {
-      all: ['build'],
-      scripts: ['build/js'],
-      styles: ['build/css'],
-      views: ['build/views']
+      all: ['build']
     },
     bower: {
       options: {
@@ -87,7 +84,6 @@ module.exports = function(grunt) {
     },
     coffee: {
       options: {
-        bare: true,
         sourceMap: true
       },
       build: {
@@ -122,17 +118,12 @@ module.exports = function(grunt) {
       },
     },
     watch: {
-      scripts: {
-        files: 'src/scripts/**/*.coffee',
-        tasks: ['clean:scripts', 'scripts']
-      },
-      styles: {
-        files: 'src/styles/**/*.styl',
-        tasks: ['clean:styles', 'styles']
-      },
-      views: {
-        files: 'src/views/**.*.jade',
-        tasks: ['clean:views', 'views']
+      app: {
+        files: [
+          'src/scripts/**/*.coffee',
+          'src/styles/**/*.styl',
+          'src/views/**.*.jade'],
+        tasks: ['clean', 'build']
       }
     },
     connect: {

@@ -1,12 +1,12 @@
 #Directives help Readability (expressive HTML that abstract the app's behaviour) and Reusability (self-contained units of functionality to avoid repetition)
 # This directive teaches the browser a new, self-contained, interactive HTML element: <game-info>
-app.directive 'gameInfo', ->
+angular.module('beyondEarthApp').directive 'gameInfo', ->
   {
     restrict: 'E'
     scope: info: '='
     templateUrl: 'js/directives/gameInfo.html'
     link: (scope, element, attrs) -> # used to create interactive directives that respond to user actions
-    
+
       # scope: the directive's scope ('info' will be a property on this object) and new properties can be added for use in the template
       # element: refers to the directive's HTML element
       # attrs: contains the element's attributes

@@ -1,5 +1,5 @@
 # Fetches Technology data from the backend.
-app.factory 'technologyService', [
+angular.module('beyondEarthApp').factory 'technologyService', [
   '$resource'
   ($resource) ->
     url = 'http://localhost:52204/api/v1/technologies/:id'

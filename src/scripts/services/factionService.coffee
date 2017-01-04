@@ -1,5 +1,5 @@
 # Fetches Faction data from the backend.
-app.factory 'factionService', [
+angular.module('beyondEarthApp').factory 'factionService', [
   '$resource'
   ($resource) ->
     url = 'http://localhost:52204/api/v1/factions/:id'

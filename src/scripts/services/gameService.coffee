@@ -1,5 +1,5 @@
 # Fetches Game data from the backend.
-app.factory 'gameService', [
+angular.module('beyondEarthApp').factory 'gameService', [
   '$resource'
   ($resource) ->
     url = 'http://localhost:52204/api/v1/games/:id'

@@ -1,4 +1,4 @@
-app.directive 'contentInfo', ->
+angular.module('beyondEarthApp').directive 'contentInfo', ->
   {
     restrict: 'E'
     transclude: true
