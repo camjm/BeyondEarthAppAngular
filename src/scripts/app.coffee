@@ -19,11 +19,12 @@ app.config [
 app.config [
   '$resourceProvider'
   ($resourceProvider) ->
-  $resourceProvider.defaults.actions =
-    # The API doesn't return an array, so override the default.
-    query: method: 'GET'
-    # No PUT method by default.
-    update: method: 'PUT'
+    $resourceProvider.defaults.actions =
+      # The API doesn't return an array, so override the default.
+      query: method: 'GET'
+      # No PUT method by default.
+      update: method: 'PUT'
+]
 
 # Resource Usage
 # -----
@@ -50,25 +51,28 @@ app.config [
         .when '/',
             controller: 'HomeController'
             templateUrl: 'views/home.html'
+        # Game routes
         .when '/games/:id',
             controller: 'GameController'
             templateUrl: 'views/game.html'
+        # Unit routes
         .when '/units/',
-            controller: 'UnitsController'
-            templateUrl: 'views/units.html'
+            controller: 'UnitListController'
+            templateUrl: 'views/unit/unit-list.html'
         .when '/units/:id/view',
-            controller: 'UnitController'
-            templateUrl: 'views/unit.html'
+            controller: 'UnitViewController'
+            templateUrl: 'views/unit/unit-view.html'
         .when '/units/:id/edit',
             controller: 'UnitEditController'
-            templateUrl: 'views/unit-edit.html'
+            templateUrl: 'views/unit/unit-edit.html'
         .when '/units/new',
-            controller: 'UnitCreateController'
-            templateUrl: 'views/unit-add.html'
+            controller: 'UnitAddController'
+            templateUrl: 'views/unit/unit-add.html'
         # If the user visits any other url just redirect to `/`
         .otherwise
             redirectTo: '/'
     return
+]
 
 # Transition to `units` state when the app starts.
 app.run ($location) ->

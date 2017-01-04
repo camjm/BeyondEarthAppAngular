@@ -1,4 +1,4 @@
-app.controller 'UnitsController', [
+app.controller 'UnitListController', [
   '$scope'
   'unitService'
   ($scope, unitService) ->

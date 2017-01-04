@@ -6,5 +6,5 @@ app.factory 'factionService', [
     parameters =
       id: '@FactionId'
     # Return resource to provide high-level behaviours without the need to interact with the low level $http service.
-    $resource(url, parameters, actions)
+    $resource(url, parameters)
 ]

@@ -1,4 +1,4 @@
-app.controller 'UnitCreateController', [
+app.controller 'UnitAddController', [
   '$scope'
   'unitService'
   '$routeParams'
