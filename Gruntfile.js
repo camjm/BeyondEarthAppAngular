@@ -68,17 +68,20 @@ module.exports = function(grunt) {
       views: {
         expand: true,
         flatten: false,
-        cwd: 'src/views/unit',
-        src: "*.jade",
-        dest: "build/views/unit",
+        cwd: 'src/views',
+        src: [
+          "**/*.jade",
+          "!**/_*.jade", // Don't compile the partials
+          "!app.jade"], // The root app file can't be expanded in the same way
+        dest: "build/views",
         ext: '.html'
       },
       directives: {
         expand: true,
         flatten: false,
-        cwd: 'src/scripts/directives',
+        cwd: 'src/scripts',
         src: ['**/*.jade'],
-        dest: 'build/js/directives',
+        dest: 'build/js',
         ext: '.html'
       }
     },

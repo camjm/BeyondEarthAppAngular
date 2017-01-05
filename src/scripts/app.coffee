@@ -54,9 +54,12 @@ app.config [
             controller: 'HomeController'
             templateUrl: 'views/home.html'
         # Game routes
-        .when '/games/:id',
-            controller: 'GameController'
-            templateUrl: 'views/game.html'
+        .when '/games/',
+            controller: 'GameListController'
+            templateUrl: 'views/game/game-list.html'
+        .when '/games/:id/view',
+            controller: 'GameViewController'
+            templateUrl: 'views/game/game-view.html'
         # Unit routes
         .when '/units/',
             controller: 'UnitListController'
@@ -78,5 +81,5 @@ app.config [
 
 # Transition to `units` state when the app starts.
 app.run ($location) ->
-  $location.path '/units/'
+  $location.path '/games/'
   return

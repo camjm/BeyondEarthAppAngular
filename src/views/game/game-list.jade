@@ -1,0 +1,8 @@
+div.main
+  div.container
+    
+    h2 {{ title }}
+    
+    content-info(info='content')
+      div.col-md-6(ng-repeat='game in content.Items')
+        game-info(info='game')
