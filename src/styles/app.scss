@@ -1,3 +1,7 @@
+/*!
+ * This will import the file in the same folder if it exists, otherwise it will import the file in the bower bootstrap folder.
+ * Bootstrap component files that need to be overriden can be copied to the bootstrap folder in this folder.
+ */
 @import '_bootstrap.scss';
 
 html, body {

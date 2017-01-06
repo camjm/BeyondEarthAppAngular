@@ -98,7 +98,18 @@ module.exports = function(grunt) {
       options: {
         includePaths: ['bower_components/bootstrap-sass/assets/stylesheets']
       },
-      app: {
+      dev: {
+        options: {
+          outputStyle: 'expanded'
+        },
+        files: {
+          "build/css/main.css": "src/styles/app.scss"
+        }
+      },
+      dist: {
+        options: {
+          outputStyle: 'compressed'
+        },
         files: {
           "build/css/main.css": "src/styles/app.scss"
         }
@@ -170,12 +181,12 @@ module.exports = function(grunt) {
   if (env === 'prod') {
     // Register tasks to compile and minify
     grunt.registerTask('scripts', ['coffee', 'concat:dist', 'uglify:dist']);
-    grunt.registerTask('styles', ['sass']); // cssmin?
+    grunt.registerTask('styles', ['sass:dist']);
     grunt.registerTask('views', ['jade']); // htmlmin?
   } else {
     // Register tasks to just compile
     grunt.registerTask('scripts', ['coffee']);
-    grunt.registerTask('styles', ['sass']);
+    grunt.registerTask('styles', ['sass:dev']);
     grunt.registerTask('views', ['jade']);
   }
 
