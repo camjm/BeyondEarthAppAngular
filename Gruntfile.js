@@ -9,11 +9,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-coffee');
-  grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-docco');
   grunt.loadTasks('./tasks');
 
@@ -38,18 +38,14 @@ module.exports = function(grunt) {
     },
     bower: {
       options: {
-        checkExistence: true,
-        debugging: true
+        checkExistence: true
       },
       dev: {
         dest: 'build/lib',
         options: {
           overrides: {
-            bootstrap: {
-              main: [
-                "dist/js/bootstrap.js",
-                "dist/css/bootstrap.css"
-              ]
+            'bootstrap-sass': {
+              ignore: true
             }
           }
         }
@@ -98,13 +94,13 @@ module.exports = function(grunt) {
         ext: '.js'
       }
     },
-    stylus: {
+    sass: {
       options: {
-        compress: env === 'prod'
+        includePaths: ['bower_components/bootstrap-sass/assets/stylesheets']
       },
       app: {
         files: {
-          "build/css/main.css": "src/styles/app.styl"
+          "build/css/main.css": "src/styles/app.scss"
         }
       }
     },
@@ -174,12 +170,12 @@ module.exports = function(grunt) {
   if (env === 'prod') {
     // Register tasks to compile and minify
     grunt.registerTask('scripts', ['coffee', 'concat:dist', 'uglify:dist']);
-    grunt.registerTask('styles', ['stylus']); // cssmin?
+    grunt.registerTask('styles', ['sass']); // cssmin?
     grunt.registerTask('views', ['jade']); // htmlmin?
   } else {
     // Register tasks to just compile
     grunt.registerTask('scripts', ['coffee']);
-    grunt.registerTask('styles', ['stylus']);
+    grunt.registerTask('styles', ['sass']);
     grunt.registerTask('views', ['jade']);
   }
 
