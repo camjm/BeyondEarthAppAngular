@@ -1,5 +1,9 @@
 # Create a new module called 'beyondEarthApp'. A module contains the different components of an [AngularJS](https://angularjs.org/) app.
-app = angular.module('beyondEarthApp')
+app = angular.module 'beyondEarthApp', [
+  'ngRoute'
+  'ngAnimate'
+  'ngResource'
+]
 
 # Temporary configuration hack.
 app.config [

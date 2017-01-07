@@ -1,10 +1,10 @@
-# Fetches Technology data from the backend.
-angular.module('core.technology').factory 'Technology', [
+# Fetches Building data from the backend.
+angular.module('beyondEarthApp').factory 'Building', [
   '$resource'
   ($resource) ->
-    url = 'http://localhost:52204/api/v1/technologies/:id'
+    url = 'http://localhost:52204/api/v1/buildings/:id'
     parameters =
-      id: '@TechnologyId'
+      id: '@BuildingId'
     # Return resource to provide high-level behaviours without the need to interact with the low level $http service.
     $resource(url, parameters)
 ]

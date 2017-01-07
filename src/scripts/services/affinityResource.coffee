@@ -1,10 +1,10 @@
-# Fetches Building data from the backend.
-angular.module('core.building').factory 'Building', [
+# Fetches Affinity data from the backend.
+angular.module('beyondEarthApp').factory 'Affinity', [
   '$resource'
   ($resource) ->
-    url = 'http://localhost:52204/api/v1/buildings/:id'
+    url = 'http://localhost:52204/api/v1/affinities/:id'
     parameters =
-      id: '@BuildingId'
+      id: '@AffinityId'
     # Return resource to provide high-level behaviours without the need to interact with the low level $http service.
     $resource(url, parameters)
 ]
