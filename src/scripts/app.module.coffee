@@ -1,8 +1,8 @@
-# Define the 'beyondEarthApp' module
+# Define the 'beyondEarthApp' module.
 angular.module 'beyondEarthApp', [
   'ngRoute'
   'ngAnimate'
   'ngResource'
-  'core'
-  #units, etc
+  'controllers'
+  'core',
 ]

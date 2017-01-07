@@ -1,10 +1,10 @@
-# Fetches Building data from the backend.
-angular.module('beyondEarthApp').factory 'buildingService', [
+# Fetches Unit data from the backend.
+angular.module('core.unit').factory 'Unit', [
   '$resource'
   ($resource) ->
-    url = 'http://localhost:52204/api/v1/buildings/:id'
+    url = 'http://localhost:52204/api/v1/units/:id'
     parameters =
-      id: '@BuildingId'
+      id: '@UnitId'
     # Return resource to provide high-level behaviours without the need to interact with the low level $http service.
     $resource(url, parameters)
 ]

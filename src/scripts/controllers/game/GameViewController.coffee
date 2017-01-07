@@ -1,15 +1,15 @@
-# Game Controller, $routeParams and gameService are injected into the controller as a dependency array.
+# Game Controller, $routeParams and Game resource are injected into the controller as a dependency array.
 # A controller should not be complex - it should only concern itself with controlling communication between different parts of the app.
 angular.module('beyondEarthApp').controller 'GameViewController', [
   '$scope'
-  'gameService'
+  'Game'
   '$routeParams'
-  ($scope, gameService, $routeParams) ->
+  ($scope, Game, $routeParams) ->
 
     $scope.title = 'My Game'
 
-    # Use the gameService to fetch the data asynchronously and store on the scope
-    gameService.getGame $routeParams.id, (data) ->
+    # Use the Game resource to fetch the data asynchronously and store on the scope
+    Game.getGame $routeParams.id, (data) ->
       # retrieve the id from the URL
       angular.extend $scope, data
       return

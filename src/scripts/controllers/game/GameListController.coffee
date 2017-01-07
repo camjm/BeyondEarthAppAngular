@@ -1,10 +1,10 @@
 angular.module('beyondEarthApp').controller 'GameListController', [
   '$scope'
-  'gameService'
-  ($scope, gameService) ->
+  'Game'
+  ($scope, Game) ->
 
     $scope.title = 'My Saved Games'
-    $scope.content = gameService.query()
+    $scope.content = Game.query()
 
     return
 ]

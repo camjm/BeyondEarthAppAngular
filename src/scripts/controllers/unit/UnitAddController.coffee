@@ -1,13 +1,13 @@
 angular.module('beyondEarthApp').controller 'UnitAddController', [
   '$scope'
-  'unitService'
+  'Unit'
   '$routeParams'
   '$location'
-  ($scope, unitService, $routeParams, $location) ->
+  ($scope, Unit, $routeParams, $location) ->
 
     $scope.title = 'Create Unit'
 
-    $scope.content = new unitService
+    $scope.content = new Unit
 
     #TODO:
     $scope.technologies = [

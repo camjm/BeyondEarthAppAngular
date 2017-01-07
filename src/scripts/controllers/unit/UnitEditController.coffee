@@ -1,13 +1,13 @@
 angular.module('beyondEarthApp').controller 'UnitEditController', [
   '$scope'
-  'unitService'
+  'Unit'
   '$routeParams'
   '$location'
-  ($scope, unitService, $routeParams, $location) ->
+  ($scope, Unit, $routeParams, $location) ->
 
     $scope.title = 'Edit Unit'
 
-    $scope.content = unitService.get(id: $routeParams.id)
+    $scope.content = Unit.get(id: $routeParams.id)
 
     #TODO:
     $scope.technologies = [
