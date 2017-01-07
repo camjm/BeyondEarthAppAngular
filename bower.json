@@ -1,6 +1,8 @@
 {
   "name": "beyond-earth-app-angular",
   "description": "An angularjs client for BeyondEarthApp",
+  "homepage": "https://github.com/camjm/BeyondEarthAppAngular",
+  "version": "0.1.0",
   "private": true,
   "main": "index.js",
   "authors": [
@@ -12,8 +14,6 @@
     "Beyond",
     "Earth"
   ],
-  "homepage": "https://github.com/camjm/BeyondEarthAppAngular",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",

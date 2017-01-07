@@ -1,8 +1,5 @@
 # Create a new module called 'beyondEarthApp'. A module contains the different components of an [AngularJS](https://angularjs.org/) app.
-app = angular.module('beyondEarthApp', [
-  'ngRoute'
-  'ngResource'
-])
+app = angular.module('beyondEarthApp')
 
 # Temporary configuration hack.
 app.config [
@@ -28,16 +25,16 @@ app.config [
       update: method: 'PUT'
 ]
 
-# Resource Usage
-# -----
-# Use the resource class methods for read operations.
-# GET: `$scope.resources = resourceService.query({pageNumber: 1, pageSize: 5});`
-# GET: `$scope.resource = resourceService.get({id: 1});`
-# Create a new instance of the resource: `new resourceService();`
-# Use the resource instance methods for write operations.
-# DELETE: `$scope.resource.$delete(function() {});`
-# POST: `$scope.resource.$save(function() {});`
-# PUT: `$scope.resource.$update(function() {});`
+# Locations
+# ---------
+# The Location service parses the URL in the address bar (`window.location`) to make available to the application.
+# There is a 2-way binding so changes to the address bar will show in `$location`, and vice versa.
+# It exposes jQuery-like getters and setters for URL parts: protocol, host, port, path, search, hash
+app.config [
+  '$locationProvider',
+  ($locationProvider) ->
+    $locationProvider.hashPrefix '!'
+]
 
 # Routes
 # ------
