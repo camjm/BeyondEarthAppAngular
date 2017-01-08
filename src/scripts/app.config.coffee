@@ -1,7 +1,7 @@
 # Create a new module called 'beyondEarthApp'. A module contains the different components of an [AngularJS](https://angularjs.org/) app.
 app = angular.module 'beyondEarthApp', [
   'ngRoute'
-  'ngAnimate'
+  #'ngAnimate'
   'ngResource'
 ]
 
@@ -23,6 +23,9 @@ app.config [
     $resourceProvider.defaults.actions =
       # The API doesn't return an array, so override the default.
       query:
+        method: 'GET'
+        cancellable: true
+      get:
         method: 'GET'
         cancellable: true
       # No PUT method by default.
@@ -51,6 +54,10 @@ app.config [
     # When links are clicked, the page doesn't fully reload, only the view (specified by the `ng-view` attribute) changes.
     $routeProvider
         # For example, when a user visits `/`, a view will be constructed by injecting `home.html` into the `<div ng-view>` element.
+        # Load the data upfront before controller initialisation, so the view will always be rendered with valid data.
+        # The controller will be initialised after all promises are resolved; the resolved data will be injected into the controller.
+        # If any promise is rejected, the $routeChangeError event will be fired, the route won't change, and the controller won't be initialised.
+        # The promise is resolved withe the data from the parent object (i.e. the object the is returned synchronously be .get())
         .when '/',
             controller: 'HomeController'
             templateUrl: 'views/home.html'
@@ -65,12 +72,18 @@ app.config [
         .when '/units/',
             controller: 'UnitListController'
             templateUrl: 'views/unit/unit-list.html'
+            resolve:
+              units: (Unit) => Unit.query().$promise
         .when '/units/:id/view',
             controller: 'UnitViewController'
             templateUrl: 'views/unit/unit-view.html'
+            resolve:
+              unit: (Unit, $route) => Unit.get(id: $route.current.params.id).$promise
         .when '/units/:id/edit',
             controller: 'UnitEditController'
             templateUrl: 'views/unit/unit-edit.html'
+            resolve:
+              unit: (Unit, $route) => Unit.get(id:$route.current.params.id).$promise
         .when '/units/new',
             controller: 'UnitAddController'
             templateUrl: 'views/unit/unit-add.html'
@@ -80,7 +93,21 @@ app.config [
     return
 ]
 
+# Global error handling
+app.run [
+  '$rootScope'
+  '$location'
+  ($rootScope, $location) ->
+    $rootScope.$on '$routeChangeError', (event, current, previous, rejection) ->
+      $location.path '/units/' #TODO: create '404' route
+      return
+    return
+]
+
 # Transition to `units` state when the app starts.
-app.run ($location) ->
-  $location.path '/games/'
-  return
+app.run [
+  '$location'
+  ($location) ->
+    $location.path '/units/'
+    return
+]

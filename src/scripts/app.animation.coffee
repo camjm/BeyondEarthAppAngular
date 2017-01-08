@@ -1,4 +1,5 @@
 # Animation
+###
 angular.module('beyondEarthApp').animation '.phone', ->
 
   animateIn = (element, className, done) ->
@@ -40,3 +41,4 @@ angular.module('beyondEarthApp').animation '.phone', ->
     addClass: animateIn
     removeClass: animateOut
   }
+###

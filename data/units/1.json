@@ -1,0 +1,33 @@
+{
+  "UnitId": 1,
+  "Name": "Test",
+  "Cost": 2,
+  "Strength": 3,
+  "Technology": {
+    "TechnologyId": 3,
+    "Name": "Ecology",
+    "Cost": 95,
+    "Links": [{
+      "Rel": "self",
+      "Href": "http://localhost:52204/api/v1/technologies/3",
+      "Method": "GET"
+    }]
+  },
+  "Links": [{
+    "Rel": "all",
+    "Href": "http://localhost:52204/api/v1/units",
+    "Method": "GET"
+  }, {
+    "Rel": "updateUnit",
+    "Href": "http://localhost:52204/api/v1/units/7",
+    "Method": "PUT"
+  }, {
+    "Rel": "deleteUnit",
+    "Href": "http://localhost:52204/api/v1/units/7",
+    "Method": "DELETE"
+  }, {
+    "Rel": "createUnit",
+    "Href": "http://localhost:52204/api/v1/units",
+    "Method": "POST"
+  }]
+}

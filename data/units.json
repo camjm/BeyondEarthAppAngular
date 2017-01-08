@@ -1,0 +1,37 @@
+{
+  "Items": [{
+    "UnitId": 1,
+    "Name": "Test",
+    "Cost": 2,
+    "Strength": 3,
+    "TechnologyName": "Ecology",
+    "Links": [{
+      "Rel": "self",
+      "Href": "http://localhost:52204/api/v1/units/1",
+      "Method": "GET"
+    }]
+  }, {
+    "UnitId": 2,
+    "Name": "Worker",
+    "Cost": 3,
+    "Strength": 4,
+    "TechnologyName": "Habitation",
+    "Links": [{
+      "Rel": "self",
+      "Href": "http://localhost:52204/api/v1/units/2",
+      "Method": "GET"
+    }]
+  }],
+  "PageSize": 25,
+  "PageNumber": 1,
+  "PageCount": 1,
+  "Links": [{
+    "Rel": "all",
+    "Href": "http://localhost:52204/api/v1/units",
+    "Method": "GET"
+  }, {
+    "Rel": "currentPage",
+    "Href": "http://localhost:52204/api/v1/units?pageNumber=1&pageSize=25",
+    "Method": "GET"
+  }]
+}
