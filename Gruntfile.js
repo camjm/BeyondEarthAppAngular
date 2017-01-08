@@ -13,6 +13,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-docco');
   grunt.loadTasks('./tasks');
@@ -153,6 +154,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    copy: {
+      data: {
+        expand: true,
+        cwd: 'data',
+        src: '**/*.json',
+        dest: 'build/data'
+      }
+    },
     // Optimization (use cssmin and htmlmin plugins too?)
     concat: { // concatenation should be done with coffee task?
       options: {
@@ -196,7 +205,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('watching',
     'builds and watches the scripts, views, and styles files and compiles them',
-    ['build', 'connect:server', 'watch']);
+    ['build', 'copy', 'connect:server', 'watch']);
 
   // Define the default task
   grunt.registerTask('default',

@@ -93,7 +93,21 @@ app.config [
     return
 ]
 
+# Global error handling
+app.run [
+  '$rootScope'
+  '$location'
+  ($rootScope, $location) ->
+    $rootScope.$on '$routeChangeError', (event, current, previous, rejection) ->
+      $location.path '/units/' #TODO: create '404' route
+      return
+    return
+]
+
 # Transition to `units` state when the app starts.
-app.run ($location) ->
-  $location.path '/units/'
-  return
+app.run [
+  '$location'
+  ($location) ->
+    $location.path '/units/'
+    return
+]
