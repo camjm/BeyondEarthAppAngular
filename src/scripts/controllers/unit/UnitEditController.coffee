@@ -1,9 +1,8 @@
 angular.module('beyondEarthApp').controller 'UnitEditController', [
   '$scope'
   'unit'
-  '$routeParams'
   '$location'
-  ($scope, unit, $routeParams, $location) ->
+  ($scope, unit, $location) ->
 
     $scope.title = 'Edit Unit'
 

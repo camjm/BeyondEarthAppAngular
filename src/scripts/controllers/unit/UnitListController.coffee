@@ -3,7 +3,7 @@ angular.module('beyondEarthApp').controller 'UnitListController', [
   'units'
   ($scope, units) ->
 
-    $scope.title = 'Units 2'
+    $scope.title = 'Units'
     $scope.content = units
 
     $scope.onFilterChanged = (filter) ->

@@ -57,6 +57,7 @@ app.config [
         # Load the data upfront before controller initialisation, so the view will always be rendered with valid data.
         # The controller will be initialised after all promises are resolved; the resolved data will be injected into the controller.
         # If any promise is rejected, the $routeChangeError event will be fired, the route won't change, and the controller won't be initialised.
+        # The promise is resolved withe the data from the parent object (i.e. the object the is returned synchronously be .get())
         .when '/',
             controller: 'HomeController'
             templateUrl: 'views/home.html'
