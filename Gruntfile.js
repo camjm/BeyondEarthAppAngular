@@ -133,7 +133,7 @@ module.exports = function(grunt) {
           'src/scripts/**/*.coffee',
           'src/styles/**/*.styl',
           'src/views/**.*.jade'],
-        tasks: ['clean', 'build']
+        tasks: ['clean', 'bower', 'build']
       }
     },
     connect: {
