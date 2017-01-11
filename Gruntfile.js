@@ -83,18 +83,31 @@ module.exports = function(grunt) {
       }
     },
     coffee: {
-      options: {
-        sourceMap: false
-      },
-      build: {
+      dev: {
         expand: true,
         flatten: false,
         cwd: 'src/scripts/',
         src: ['**/*.coffee'],
-        dest: 'build/js',
-        ext: '.js'
+        dest: 'build/js'
+      },
+      dist: {
+        options: {
+          join: true
+        },
+        src: ['**/*.coffee'],
+        dest: 'build/js/app.js'
       }
     },
+    uglify: {
+      options: {
+        banner: '<%= banner %>',
+        sourceMap: true,
+      },
+      dist: {
+        src: '<%= coffee.dist.dest %>',
+        dest: 'build/js/app.min.js'
+      }
+    }
     sass: {
       options: {
         includePaths: ['bower_components/bootstrap-sass/assets/stylesheets']
@@ -117,9 +130,6 @@ module.exports = function(grunt) {
       }
     },
     // Misc
-    webrequest: {
-      url: 'http://www.google.com' //TODO: make local address
-    },
     logger: {
       deploy: {
         dest: 'deploy.log',
@@ -130,11 +140,8 @@ module.exports = function(grunt) {
     },
     watch: {
       app: {
-        files: [
-          'src/scripts/**/*.coffee',
-          'src/styles/**/*.styl',
-          'src/views/**.*.jade'],
-        tasks: ['clean', 'bower', 'build']
+        files: [ 'src/**/*.{coffee,styl,jade}' ],
+        tasks: ['build']
       }
     },
     connect: {
@@ -161,54 +168,37 @@ module.exports = function(grunt) {
         src: '**/*.json',
         dest: 'build/data'
       }
-    },
-    // Optimization (use cssmin and htmlmin plugins too?)
-    concat: { // concatenation should be done with coffee task?
-      options: {
-        banner: '<%= banner %>',
-        stripBanners: true,
-        sourceMap: true
-      },
-      dist: {
-        src: 'build/js/**/*.js',
-        dest: 'build/js/<%= pkg.name %>-<%= pkg.version %>.js'
-      }
-    },
-    uglify: {
-      options: {
-        banner: '<%= banner %>',
-        sourceMap: true,
-      },
-      dist: {
-        src: 'build/js/<%= pkg.name %>-<%= pkg.version %>.js',
-        dest: 'build/js/<%= pkg.name %>-<%= pkg.version %>.min.js'
-      }
     }
   });
 
   // Environment specific tasks
   if (env === 'prod') {
     // Register tasks to compile and minify
-    grunt.registerTask('scripts', ['coffee', 'concat:dist', 'uglify:dist']);
+    grunt.registerTask('scripts', ['coffee:dist', 'uglify:dist']);
     grunt.registerTask('styles', ['sass:dist']);
     grunt.registerTask('views', ['jade']); // htmlmin?
   } else {
     // Register tasks to just compile
-    grunt.registerTask('scripts', ['coffee']);
+    grunt.registerTask('scripts', ['coffee:dev']);
     grunt.registerTask('styles', ['sass:dev']);
     grunt.registerTask('views', ['jade']);
   }
 
   grunt.registerTask('build',
     'compiles the source files',
-    ['views', 'scripts', 'styles']);
+    ['clean:all', 'bower:dev', 'views', 'scripts', 'styles']);
+
+  grunt.registerTask('server',
+    'Starts a simple express file server',
+    ['build', 'copy:data', 'connect:server']);
 
   grunt.registerTask('watching',
-    'builds and watches the scripts, views, and styles files and compiles them',
-    ['build', 'copy', 'connect:server', 'watch']);
+    'Watches the scripts, views, and styles files and compiles them',
+    ['server', 'watch']);
 
   // Define the default task
   grunt.registerTask('default',
-    ['jshint', 'clean:all', 'bower:dev', 'build', 'docco:debug', 'logger:deploy', 'webrequest']);
+    'Lints and compiles the source, then generates documentation'
+    ['jshint', 'build', 'docco:debug', 'logger:deploy', 'webrequest']);
 
 };
