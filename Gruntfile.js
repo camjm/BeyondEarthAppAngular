@@ -142,8 +142,14 @@ module.exports = function(grunt) {
       }
     },
     docco: {
-      debug: {
+      app: {
         src: ['src/**/*.coffee'],
+        options: {
+          output: 'build/docs'
+        }
+      },
+      grunt: {
+        src: 'Gruntfile.js',
         options: {
           output: 'build/docs'
         }
@@ -186,6 +192,6 @@ module.exports = function(grunt) {
 
   // Define the default task
   grunt.registerTask('default',
-    ['jshint', 'build', 'docco:debug', 'logger:deploy']);
+    ['jshint', 'build', 'docco', 'logger:deploy']);
 
 };
