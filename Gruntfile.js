@@ -55,30 +55,18 @@ module.exports = function(grunt) {
     // Compilation
     jade: {
       options: {
-        pretty: env !== 'prod',
+        pretty: true,
         doctype: "html"
       },
-      app: {
-        src: "src/views/app.jade",
-        dest: "build/index.html"
-      },
-      views: {
+      build: {
         expand: true,
         flatten: false,
-        cwd: 'src/views',
+        cwd: 'src',
         src: [
           "**/*.jade",
-          "!**/_*.jade", // Don't compile the partials
-          "!app.jade"], // The root app file can't be expanded in the same way
-        dest: "build/views",
-        ext: '.html'
-      },
-      directives: {
-        expand: true,
-        flatten: false,
-        cwd: 'src/scripts',
-        src: ['**/*.jade'],
-        dest: 'build/js',
+          // Don't compile the partials
+          "!**/_*.jade"],
+        dest: "build",
         ext: '.html'
       }
     },
@@ -107,7 +95,7 @@ module.exports = function(grunt) {
         src: '<%= coffee.dist.dest %>',
         dest: 'build/js/app.min.js'
       }
-    }
+    },
     sass: {
       options: {
         includePaths: ['bower_components/bootstrap-sass/assets/stylesheets']
@@ -136,7 +124,7 @@ module.exports = function(grunt) {
         message: function() {
           return 'Deployment on ' + new Date();
         }
-      },
+      }
     },
     watch: {
       app: {
@@ -198,7 +186,6 @@ module.exports = function(grunt) {
 
   // Define the default task
   grunt.registerTask('default',
-    'Lints and compiles the source, then generates documentation'
-    ['jshint', 'build', 'docco:debug', 'logger:deploy', 'webrequest']);
+    ['jshint', 'build', 'docco:debug', 'logger:deploy']);
 
 };
