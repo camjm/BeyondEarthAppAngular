@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         checkExistence: true
       },
       dev: {
-        dest: 'build/lib',
+        dest: 'build/assets/lib',
         options: {
           overrides: {
             'bootstrap-sass': {
@@ -74,16 +74,17 @@ module.exports = function(grunt) {
       dev: {
         expand: true,
         flatten: false,
-        cwd: 'src/scripts/',
+        cwd: 'src',
         src: ['**/*.coffee'],
-        dest: 'build/js'
+        dest: 'build',
+        ext: '.js'
       },
       dist: {
         options: {
           join: true
         },
-        src: ['**/*.coffee'],
-        dest: 'build/js/app.js'
+        src: ['src/**/*.coffee'],
+        dest: 'build/app.src.js'
       }
     },
     uglify: {
@@ -93,7 +94,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: '<%= coffee.dist.dest %>',
-        dest: 'build/js/app.min.js'
+        dest: 'build/app.min.js'
       }
     },
     sass: {
@@ -105,7 +106,7 @@ module.exports = function(grunt) {
           outputStyle: 'expanded'
         },
         files: {
-          "build/css/main.css": "src/styles/app.scss"
+          "build/assets/css/main.css": "src/styles/app.scss"
         }
       },
       dist: {
@@ -113,7 +114,7 @@ module.exports = function(grunt) {
           outputStyle: 'compressed'
         },
         files: {
-          "build/css/main.css": "src/styles/app.scss"
+          "build/assets/css/main.css": "src/styles/app.scss"
         }
       }
     },
@@ -128,7 +129,7 @@ module.exports = function(grunt) {
     },
     watch: {
       app: {
-        files: [ 'src/**/*.{coffee,styl,jade}' ],
+        files: [ 'src/**/*.{coffee,scss,jade}' ],
         tasks: ['build']
       }
     },

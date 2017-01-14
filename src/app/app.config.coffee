@@ -1,9 +1,7 @@
-# Create a new module called 'beyondEarthApp'. A module contains the different components of an [AngularJS](https://angularjs.org/) app.
-app = angular.module 'beyondEarthApp'
-
 # HTTP
 # ----
-app.config [
+# Configure the core Angular $http service that comunicates with remote HTTP servers.
+angular.module('beyondEarthApp').config [
   '$httpProvider'
   ($httpProvider) ->
     # Temporary configuration hack.
@@ -15,7 +13,7 @@ app.config [
 # ---------
 # Resources abstracts the communication logic into a standalone service, so controllers don't get code-bloat or need to manage promises.
 # Resources provide a clean and simple way to interact with RESTful server-side data source.
-app.config [
+angular.module('beyondEarthApp').config [
   '$resourceProvider'
   ($resourceProvider) ->
     $resourceProvider.defaults.actions =
@@ -28,6 +26,7 @@ app.config [
         cancellable: true
       # No PUT method by default.
       update: method: 'PUT'
+    return
 ]
 
 # Locations
@@ -35,14 +34,15 @@ app.config [
 # The Location service parses the URL in the address bar (`window.location`) to make available to the application.
 # There is a 2-way binding so changes to the address bar will show in `$location`, and vice versa.
 # It exposes jQuery-like getters and setters for URL parts: protocol, host, port, path, search, hash
-app.config [
+angular.module('beyondEarthApp').config [
   '$locationProvider',
   ($locationProvider) ->
     $locationProvider.hashPrefix '!'
+    return
 ]
 
 # Global error handling
-app.run [
+angular.module('beyondEarthApp').run [
   '$rootScope'
   '$location'
   ($rootScope, $location) ->
@@ -53,7 +53,7 @@ app.run [
 ]
 
 # Transition to `units` state when the app starts.
-app.run [
+angular.module('beyondEarthApp').run [
   '$location'
   ($location) ->
     $location.path '/units/'
