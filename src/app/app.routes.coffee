@@ -15,33 +15,33 @@ angular.module('beyondEarthApp').config [
         # The promise is resolved withe the data from the parent object (i.e. the object the is returned synchronously be .get())
         .when '/',
             controller: 'HomeController'
-            templateUrl: 'views/home.html'
+            templateUrl: 'app/components/home/home.html'
         # Game routes
         .when '/games/',
             controller: 'GameListController'
-            templateUrl: 'views/game/game-list.html'
+            templateUrl: 'app/components/game/views/game-list.html'
         .when '/games/:id/view',
             controller: 'GameViewController'
-            templateUrl: 'views/game/game-view.html'
+            templateUrl: 'app/components/game/views/game-view.html'
         # Unit routes
         .when '/units/',
             controller: 'UnitListController'
-            templateUrl: 'views/unit/unit-list.html'
+            templateUrl: 'app/components/unit/views/unit-list.html'
             resolve:
               units: (Unit) => Unit.query().$promise
         .when '/units/:id/view',
             controller: 'UnitViewController'
-            templateUrl: 'views/unit/unit-view.html'
+            templateUrl: 'app/components/unit/views/unit-view.html'
             resolve:
               unit: (Unit, $route) => Unit.get(id: $route.current.params.id).$promise
         .when '/units/:id/edit',
             controller: 'UnitEditController'
-            templateUrl: 'views/unit/unit-edit.html'
+            templateUrl: 'app/components/unit/views/unit/unit-edit.html'
             resolve:
               unit: (Unit, $route) => Unit.get(id:$route.current.params.id).$promise
         .when '/units/new',
             controller: 'UnitAddController'
-            templateUrl: 'views/unit/unit-add.html'
+            templateUrl: 'app/components/unit/views/unit/unit-add.html'
         # If the user visits any other url just redirect to `/`
         .otherwise
             redirectTo: '/'
