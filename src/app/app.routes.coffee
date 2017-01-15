@@ -36,12 +36,12 @@ angular.module('beyondEarthApp').config [
               unit: (Unit, $route) => Unit.get(id: $route.current.params.id).$promise
         .when '/units/:id/edit',
             controller: 'UnitEditController'
-            templateUrl: 'app/components/unit/views/unit/unit-edit.html'
+            templateUrl: 'app/components/unit/views/unit-edit.html'
             resolve:
               unit: (Unit, $route) => Unit.get(id:$route.current.params.id).$promise
         .when '/units/new',
             controller: 'UnitAddController'
-            templateUrl: 'app/components/unit/views/unit/unit-add.html'
+            templateUrl: 'app/components/unit/views/unit-add.html'
         # If the user visits any other url just redirect to `/`
         .otherwise
             redirectTo: '/'

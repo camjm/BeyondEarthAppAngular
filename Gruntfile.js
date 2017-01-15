@@ -64,8 +64,8 @@ module.exports = function(grunt) {
         cwd: 'src',
         src: [
           "**/*.jade",
-          // Don't compile the partials
-          "!**/_*.jade"],
+          // Don't compile the layout partials
+          "!views/**/_*.jade"],
         dest: "build",
         ext: '.html'
       }
@@ -130,7 +130,7 @@ module.exports = function(grunt) {
     watch: {
       app: {
         files: [ 'src/**/*.{coffee,scss,jade}' ],
-        tasks: ['build']
+        tasks: ['build', 'copy:data']
       }
     },
     connect: {
