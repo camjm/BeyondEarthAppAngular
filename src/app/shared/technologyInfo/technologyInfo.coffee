@@ -3,7 +3,7 @@ angular.module('beyondEarthApp').directive 'technologyInfo', ->
     restrict: 'E'
     replace: true
     scope: info: '='
-    templateUrl: 'js/directives/technologyInfo.html'
+    templateUrl: 'app/shared/technologyInfo/technologyInfo.html'
     link: (scope, element, attrs) ->
 
   }

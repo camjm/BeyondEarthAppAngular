@@ -1,8 +1,8 @@
 div.main
   div.container
-  
+
     h2 {{ title }}
-    
+
     content-info(info='content')
       form.form-horizontal(role='form' ng-submit='updateUnit()')
-        div(ng-include='views/unit/_form.html')
+        div(ng-include="'app/components/unit/views/_form.html'")
