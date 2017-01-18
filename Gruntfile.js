@@ -72,12 +72,13 @@ module.exports = function(grunt) {
     },
     coffee: {
       dev: {
-        expand: true,
-        flatten: false,
-        cwd: 'src',
-        src: ['**/*.coffee'],
-        dest: 'build',
-        ext: '.js'
+        files: {
+          'build/app/app.js': ['src/app/app.module.coffee', 'src/app/app.config.coffee', 'src/app/app.routes.coffee'],
+          'build/app/controllers.js': ['src/**/*.controller.coffee'],
+          'build/app/directives.js': ['src/**/*.directive.coffee'],
+          'build/app/resources.js': ['src/**/*.resource.coffee'],
+          'build/app/routes.js': ['src/**/*.routes.coffee']
+        }
       },
       dist: {
         options: {
