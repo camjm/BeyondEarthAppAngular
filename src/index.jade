@@ -1,4 +1,22 @@
-extends views/_layout
-
-block content
-  div(ng-view)
+doctype html
+html
+  head
+    title Beyond Earth App
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(href='https://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css')
+    link(href="assets/css/main.css" rel="stylesheet")
+    // Include the AngularJS libraries
+    script(src="assets/lib/angular.js")
+    script(src="assets/lib/angular-route.js")
+    script(src="assets/lib/angular-resource.js")
+  // 'ng-app' tells AngularJS the beyondEarthApp module will live within this element, the scope.
+  body(ng-app="beyondEarthApp")
+    include app/core/header/_header
+    div(ng-view)
+    include app/core/footer/_footer
+    // App
+    script(src="app/app.js")
+    script(src="app/routes.js")
+    script(src="app/resources.js")
+    script(src="app/directives.js")
+    script(src="app/controllers.js")

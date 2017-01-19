@@ -1,4 +1,4 @@
-angular.module('beyondEarthApp').directive 'menuItem', [
+angular.module('beyondEarthApp').directive 'headerNav', [
   '$location'
   ($location) ->
     {
@@ -6,7 +6,7 @@ angular.module('beyondEarthApp').directive 'menuItem', [
       replace: true
       transclude: true
       scope: path: '='
-      templateUrl: 'app/shared/menu/menuItem.html'
+      templateUrl: 'app/core/header/headerNav.html'
       link: (scope, element, attrs) ->
         scope.isActive = () ->
           $location.path() == scope.path

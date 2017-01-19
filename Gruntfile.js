@@ -71,21 +71,17 @@ module.exports = function(grunt) {
       }
     },
     coffee: {
+      options: {
+        banner: '<%= banner %>'
+      },
       dev: {
         files: {
-          'build/app/app.js': ['src/app/app.module.coffee', 'src/app/app.config.coffee', 'src/app/app.routes.coffee'],
+          'build/app/app.js': ['src/app/app.module.coffee', 'src/app/app.config.coffee'],
           'build/app/controllers.js': ['src/**/*.controller.coffee'],
           'build/app/directives.js': ['src/**/*.directive.coffee'],
           'build/app/resources.js': ['src/**/*.resource.coffee'],
           'build/app/routes.js': ['src/**/*.routes.coffee']
         }
-      },
-      dist: {
-        options: {
-          join: true
-        },
-        src: ['src/**/*.coffee'],
-        dest: 'build/app.src.js'
       }
     },
     uglify: {
@@ -94,8 +90,11 @@ module.exports = function(grunt) {
         sourceMap: true,
       },
       dist: {
-        src: '<%= coffee.dist.dest %>',
-        dest: 'build/app.min.js'
+        expand: true,
+        cwd: 'build/app',
+        src: ['*.js'],
+        dest: 'build/app',
+        ext: '.min.js'
       }
     },
     sass: {
@@ -170,12 +169,12 @@ module.exports = function(grunt) {
   // Environment specific tasks
   if (env === 'prod') {
     // Register tasks to compile and minify
-    grunt.registerTask('scripts', ['coffee:dist', 'uglify:dist']);
+    grunt.registerTask('scripts', ['coffee', 'uglify']);
     grunt.registerTask('styles', ['sass:dist']);
     grunt.registerTask('views', ['jade']); // htmlmin?
   } else {
     // Register tasks to just compile
-    grunt.registerTask('scripts', ['coffee:dev']);
+    grunt.registerTask('scripts', ['coffee']);
     grunt.registerTask('styles', ['sass:dev']);
     grunt.registerTask('views', ['jade']);
   }

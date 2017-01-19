@@ -41,6 +41,20 @@ angular.module('beyondEarthApp').config [
     return
 ]
 
+# Routes
+# ------
+# Routes are a way to manage apps containing more views.
+# Templates are views that display different pieces of data, based on the URL the user is visiting.
+# When links are clicked, the page doesn't fully reload, only the view (specified by the `ng-view` attribute) changes.
+angular.module('beyondEarthApp').config [
+  '$routeProvider'
+  ($routeProvider) ->
+    $routeProvider
+        .otherwise
+            redirectTo: '/'
+    return
+]
+
 # Global error handling
 angular.module('beyondEarthApp').run [
   '$rootScope'
