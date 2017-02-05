@@ -37,7 +37,9 @@ angular.module('beyondEarthApp').config [
 angular.module('beyondEarthApp').config [
   '$locationProvider',
   ($locationProvider) ->
-    $locationProvider.hashPrefix '!'
+    # Use the HTML5 History API - a standardized way to manipulate the broewser history using a script.
+    # This lets Angular change the routing and URLs of the pages without refreshing the page.
+    $locationProvider.html5Mode(true)
     return
 ]
 

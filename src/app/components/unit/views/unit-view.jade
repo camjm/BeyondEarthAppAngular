@@ -6,7 +6,7 @@ div.main
       h2
         | {{ content.Name }}
         div.pull-right
-          a.btn.btn-primary(href='#!/units/{{content.UnitId}}/edit') Edit
+          a.btn.btn-primary(href='/units/{{content.UnitId}}/edit') Edit
           a.btn.btn-danger(ng-click='deleteUnit()') Delete
 
       ul.list-group
