@@ -10,12 +10,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-nodemon');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-docco');
+  grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadTasks('./tasks');
 
   // Project configuration
@@ -133,6 +135,17 @@ module.exports = function(grunt) {
         tasks: ['build', 'copy:data']
       }
     },
+    nodemon: {
+      dev: {
+        script: 'server.js'
+      }
+    },
+    concurrent: {
+      options: {
+        logConcurrentOutput: true
+      },
+      tasks: ['nodemon', 'watch']
+    },
     connect: {
       server: {
         options: {
@@ -189,7 +202,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('watching',
     'Watches the scripts, views, and styles files and compiles them',
-    ['server', 'watch']);
+    ['server', 'concurrent']);
 
   // Define the default task
   grunt.registerTask('default',
